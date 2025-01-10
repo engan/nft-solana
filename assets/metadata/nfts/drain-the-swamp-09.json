@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #9",
+  "symbol": "DTS",
+  "description": "A satire on a leader devaluing education, surrounded by billionaires reaping the rewards of inequality.",
+  "image": "https://devnet.irys.xyz/FQiv4uB3zjyhcDmiw3j3RC7yBWoTvZFE2tKqLR1Zmcjn",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "5"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "DEzGFqnPUeSXMEaZ7w5aC4Zf2cJVUEpv2pkokXC9pGte",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/FQiv4uB3zjyhcDmiw3j3RC7yBWoTvZFE2tKqLR1Zmcjn",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/6ZE61EiwBWRKeNFA1onQdjto6BRTZGrmdww9bHMMKrFz"
+}

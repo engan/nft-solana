@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #10",
+  "symbol": "DTS",
+  "description": "An illustration of a politician resisting social equality movements, surrounded by power and wealth.",
+  "image": "https://devnet.irys.xyz/FNGhj1uEyHLwk76jJuzbH5wBUdVpzyqUnkkjttaJJXCN",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "No"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "13"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "F4ENLbRrdKrhh2u8D41JWcmpc4VroDGBb7tFLPL7FLbN",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/FNGhj1uEyHLwk76jJuzbH5wBUdVpzyqUnkkjttaJJXCN",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/FMJiXQRWuBCYczvqzJSejXkSXeueqoXGxebFJwRT1rhZ"
+}

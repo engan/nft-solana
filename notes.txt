@@ -1,0 +1,111 @@
+// WSL installed (Linux environment)
+// The files are now stored in Windows here: \\wsl$\Ubuntu\home\chieftec
+
+// VSCode: Ctrl + Shift + P
+// VSCode Command Palette: WSL: New WSL window
+
+// If "VS Code Server for WSL closed unexpectedly"
+// Open Powershell (not as admin)
+// wsl --shutdown
+// wsl
+chieftec@Chieftec-PC:~$
+
+Check globally installed packages
+pnpm list -g --depth=0
+npm list -g --depth=0
+/home/chieftec/.nvm/versions/node/v22.12.0/lib
+├── @irys/cli@0.0.16
+├── corepack@0.30.0
+├── npm@11.0.0
+└── yarn@1.22.22
+
+nvm --version
+0.40.1
+urge --version
+v22.12.0
+npm --version
+11.0.0
+pnpm --version
+9.15.2
+solana --version
+solana-cli 2.0.21 (src:99ac0105; feat:607245837, client:Agave)
+rustc --version
+rustc 1.79. 0 (129f3b996 2024-06-10)
+cargo --version
+cargo 1.79.0 (ffa9cf99a 2024-06-03)
+anchor --version
+anchor-cli 0.30.1
+
+Find folders in Windows Explorer
+\\wsl$\Ubuntu\
+\\wsl .localhost\Ubuntu\
+
+Create a blank project (inside folder)
+pnpm init
+(This creates a package.json file.)
+
+Configure Solana CLI
+This configures Solana CLI to use the specified RPC URL and keypair for future commands:
+solana config set --url https://api.devnet.solana.com --keypair ~/.config/solana/id.json
+
+Generate public key
+solana-keygen pubkey
+Sample output: 5EVDTSVL25Ny1xXitQkTTA2WXc2UHuSPrw7f7S4JM8u5
+
+Check Solana configuration
+solana config get
+Sample Output:
+Config File: /home/chieftec/.config/solana/cli/config.yml
+RPC URL: https://api.devnet.solana.com
+WebSocket URL: wss://api.devnet.solana.com / (computed)
+Keypair Path: /home/chieftec/.config/solana/id.json
+Commitment: confirmed
+
+solana config set --url https://api.devnet.solana.com # For devnet
+solana config set --url https ://api.mainnet-beta.solana.com # For the mainnet
+
+Install packages locally
+pnpm add @metaplex-foundation/umi@latest @solana/web3.js@latest
+pnpm add @metaplex-foundation/mpl-token-metadata@latest
+pnpm add @metaplex-foundation/umi-bundle-defaults@latest
+ (Also required to upload files to Arweave via Irys.)
+
+Install support for the Arweave library
+pnpm add arweave@latest
+
+Install support for Fs and Path in Node
+pnpm add @types/node@latest
+
+Install .env file support
+pnpm add dotenv@latest
+(If .env doesn't work, you can create the file manually.)
+
+Install Solana helpers
+pnpm add @solana-developers/helpers@latest
+
+Install support for Iry's library
+pnpm add @irys/upload@latest
+pnpm add @irys/upload-solana@latest
+
+Install package for running TypeScript
+pnpm add esrun@latest
+
+bs58.encode is used to convert the key to Base58,
+since Node.js does not support 'base58' in Buffer.toString.
+pnpm add bs58
+
+Run irys-upload.ts to upload all necessary files:
+npx esrun 1-irys-upload.ts
+
+Once the files are uploaded, check them via the gateway:
+Irys: https://gateway.irys.xyz/[ transaction-id]
+Arweave: https://arweave.net/[transaction-id]
+
+Run create-collection.ts to create a collection NFT:
+npx esrun 2-create-collection.ts
+
+Run create-nft.ts to create individual NFTs:
+npx esrun 3-create-nfts.ts
+
+Run verify-nft.ts to verify NFTs:
+npx esrun 4-verify-nfts.ts

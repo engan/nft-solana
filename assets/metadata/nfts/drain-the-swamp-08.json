@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #8",
+  "symbol": "DTS",
+  "description": "A depiction of a leader endorsing mass surveillance under the guise of security, surrounded by wealth and power.",
+  "image": "https://devnet.irys.xyz/2NUHC1Lb97nSeAxxpbd6fawSu4AXtPvYsvGbCJRz3sUJ",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "5"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "FgQFvyt9uigcT3BMqSPqqjprGSApPSFmxGo5CfwWh318",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/2NUHC1Lb97nSeAxxpbd6fawSu4AXtPvYsvGbCJRz3sUJ",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/E1DpiXUUH7VBGMaHeX7JPjua4UP6iLziUPSG98rLQgBq"
+}

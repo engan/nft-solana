@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #11",
+  "symbol": "DTS",
+  "description": "A humorous take on a leader exploiting economic systems for personal gain, surrounded by cash and supporters.",
+  "image": "https://devnet.irys.xyz/Db9xBCSmVPBSLWMHkXHe6GJjaQTUKbTeJBML1tEHi5fw",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "5"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "3ws4z48VaMBjgnYe1MoPwahqbjCKvcfpD5HMkYGo3G9A",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/Db9xBCSmVPBSLWMHkXHe6GJjaQTUKbTeJBML1tEHi5fw",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/Cheo82LfZNvkSX2NCUbqsFMup713qDxKfpUxRbLSrvJa"
+}

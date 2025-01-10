@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #6",
+  "symbol": "DTS",
+  "description": "A satire of a leader promoting peace while engaging in conflict, surrounded by the wealth of those benefiting from the chaos.",
+  "image": "https://devnet.irys.xyz/7J6XMzfDUTmvg5qCHKZLMt8QXkb8aDm7sR9aS1zWi2sV",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "5"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "ENwrGizjJPaYedAZHe5TV23Wrqc5tm7FCEyLAx4RXVHb",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/7J6XMzfDUTmvg5qCHKZLMt8QXkb8aDm7sR9aS1zWi2sV",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/DL61C324hSDNUJpch1pAfDYrk6g2VAXHhKhhi7EF8ob2"
+}

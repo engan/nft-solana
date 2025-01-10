@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #12",
+  "symbol": "DTS",
+  "description": "An image of a politician manipulating the justice system, surrounded by billionaires with stacks of money.",
+  "image": "https://devnet.irys.xyz/EsBoeQEfyo7QHGQiV9B1qa2Vgw2Mc5QwsDboq7G8n2cn",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "5"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "2zcRCeR1T5uXcktQzDkykkfnEMnpseobjbW85pBpUvPz",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/EsBoeQEfyo7QHGQiV9B1qa2Vgw2Mc5QwsDboq7G8n2cn",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/2aFJUwJ1xGrUti659Y6hhLq3Hzz7W61iJgLpjPRYFTMp"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Drain the Swamp",
+  "symbol": "DTS",
+  "description": "A satirical NFT collection depicting themes of power, corruption, and irony, with AI-generated art inspired by modern political events.",
+  "image": "https://devnet.irys.xyz/HVcHd6hCb4boE8DJgP47Fo1Mfv9VgpBuhost3hS4w3jV",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 1"
+    },
+    {
+      "trait_type": "Total NFTs",
+      "value": 12
+    },
+    {
+      "trait_type": "Focus",
+      "value": "Political Figures and Corruption"
+    },
+    {
+      "trait_type": "Visual Variations",
+      "value": "Dress Colors, Number of People, Text Presence Below"
+    }
+  ],
+  "creators": [
+    {
+      "address": "5EVDTSVL25Ny1xXitQkTTA2WXc2UHuSPrw7f7S4JM8u5",
+      "share": 100
+    }
+  ],
+  "transactionId": "GjZDJAhn1ma9EAQ4dMwoYrj2d5oYp9aZVNW5XsGumVHK",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/HVcHd6hCb4boE8DJgP47Fo1Mfv9VgpBuhost3hS4w3jV",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/2VN93ByKSKNVbxwCSBwiavfzZStQJzUYqvUHR9aehu1T"
+}

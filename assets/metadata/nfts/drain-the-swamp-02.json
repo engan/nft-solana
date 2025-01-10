@@ -1,0 +1,48 @@
+{
+  "name": "Drain the Swamp #2",
+  "symbol": "DTS",
+  "description": "An illustration of a leader ignoring environmental crises, surrounded by billionaires and stacks of money, emphasizing greed over responsibility.",
+  "image": "https://devnet.irys.xyz/EVeYeDKvb9iPStTTr55EEpn9VETmjefPwN9yNTt5SH8C",
+  "external_url": "https://facebook.com/nftsatire/",
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "No"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "7"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Maniacal Laugh"
+    }
+  ],
+  "transactionId": "36trUH3XhhYuBXJUToVtYGRjUf7isoydE3RsmviL2dqv",
+  "properties": {
+    "files": [
+      {
+        "uri": "https://devnet.irys.xyz/EVeYeDKvb9iPStTTr55EEpn9VETmjefPwN9yNTt5SH8C",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  },
+  "uri": "https://devnet.irys.xyz/WPhY3MRnDzoMchCJxo6CSXuzrfYD3uqLSay8Nig2i9d"
+}
