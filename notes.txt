@@ -109,3 +109,65 @@ npx esrun 3-create-nfts.ts
 
 Run verify-nft.ts to verify NFTs:
 npx esrun 4-verify-nfts.ts
+
+
+Alternativt spesifiser nettverket direkte ved kjøring
+CLUSTER=devnet npx esrun 1-irys-upload.ts
+CLUSTER=devnet npx esrun 2-create-collection.ts
+CLUSTER=devnet npx esrun 3-create-nfts.ts
+CLUSTER=devnet npx ts-node 4-verify-nfts.ts
+
+
+For å overføre arbeidet ditt fra devnet til mainnet med ekte Solana og Arweave, 
+må du gjøre noen forberedelser. Her er en trinn-for-trinn-guide:
+
+1. Opprett en ny lommebok for mainnet
+Generer en ny Solana-lommebok for mainnet-beta:
+
+solana-keygen new --outfile ~/.config/solana/id.json
+
+Bekreft adressen: solana address
+Dette gir deg din mainnet-adresse som du vil bruke til ekte Solana-transaksjoner.
+
+2. Konfigurer Solana for mainnet
+Endre nettverket til mainnet-beta: solana config set --url https://api.mainnet-beta.solana.com
+
+Verifiser konfigurasjonen: solana config get
+Sørg for at RPC URL peker til https://api.mainnet-beta.solana.com.
+
+3. Fyll opp lommeboken med SOL
+Kjøp Solana (SOL) fra en børs som støtter uttak til din mainnet-adresse.
+Overfør SOL til adressen du genererte i steg 1.
+
+4. Sett opp Arweave-lommebok
+Arweave støtter også Solana-signering via kompatible tjenester, men du trenger typisk en separat Arweave-lommebok:
+Opprett en Arweave-lommebok via en tjeneste som ArConnect eller Arweave.app.
+Last ned nøkkelfilen for lommeboken din, som kreves for opplasting.
+
+5. Oppdater miljøvariabler
+Oppdater .env-filen din med riktig nettverk og nøkler:
+PRIVATE_KEY=[din mainnet privatnøkkel som base58]
+BASE_IRYS_URL=https://mainnet.irys.xyz
+CLUSTER=mainnet-beta
+BASE_ARWEAVE_URL=https://arweave.net
+
+6. Gjennomgå og oppdater koden
+Dobbeltsjekk at koden din peker til riktige URL-er for både Solana og Arweave:
+CLUSTER må være mainnet-beta.
+BASE_IRYS_URL og BASE_ARWEAVE_URL må peke til deres respektive mainnet-gatewayer.
+
+7. Test prosessen med små ressurser
+Start med en liten testopplasting for å verifisere at alt fungerer.
+Last opp én samling eller NFT til Arweave og Solana og bekreft via gateway-URL-ene.
+
+8. Sikkerhetskopi
+Oppbevar nøklene dine trygt og unngå å dele dem. Bruk en hardware-lommebok hvis mulig for høyere sikkerhet.
+
+9. Overfør alt fra devnet til mainnet
+Gjenta hele prosessen du har gjort på devnet, men med de oppdaterte konfigurasjonene og mainnet-ressursene.
+
+Viktige tips:
+Gasskostnader: Sørg for at du har tilstrekkelig SOL i lommeboken din til å dekke transaksjonskostnader.
+Arweave opplastningsgebyr: Sørg for at Arweave-lommeboken har tilstrekkelige midler for å betale for permanent lagring.
+Test alt nøye før du satser på større ressurser.
+Når du har gjennomført dette, vil du være klar til å operere på mainnet med ekte Solana og Arweave-integrasjon!

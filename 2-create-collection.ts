@@ -14,7 +14,7 @@ import {
 
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'
 
-import { Connection, LAMPORTS_PER_SOL, clusterApiUrl } from '@solana/web3.js'
+import { Cluster, Connection, LAMPORTS_PER_SOL, clusterApiUrl } from '@solana/web3.js'
 import {
   generateSigner,
   keypairIdentity,
@@ -23,7 +23,15 @@ import {
   PublicKey,
 } from '@metaplex-foundation/umi'
 
-const connection = new Connection(clusterApiUrl('devnet'))
+const CLUSTER = (process.env.CLUSTER || 'devnet') as Cluster;
+
+if (!['devnet', 'testnet', 'mainnet-beta'].includes(CLUSTER)) {
+    throw new Error(`Invalid CLUSTER value: ${CLUSTER}. Must be 'devnet', 'testnet', or 'mainnet-beta'.`);
+}
+console.log(`Using network: ${CLUSTER}`);
+
+const connection = new Connection(clusterApiUrl(CLUSTER));
+
 const assetsPath = './assets'
 
 const user = await getKeypairFromFile()
@@ -92,7 +100,7 @@ console.log(
   `✅ Created Collection 📦! Address is ${getExplorerLink(
     'address',
     collectionMint.publicKey,
-    'devnet'
+    CLUSTER
   )}`
 )
 

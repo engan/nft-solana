@@ -11,12 +11,22 @@ import {
 } from '@solana-developers/helpers'
 
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults'
-import { Connection, LAMPORTS_PER_SOL, clusterApiUrl } from '@solana/web3.js'
+import { Cluster, Connection, LAMPORTS_PER_SOL, clusterApiUrl } from '@solana/web3.js'
 import { keypairIdentity, publicKey } from '@metaplex-foundation/umi'
 
 import fs from 'fs'
 
-const connection = new Connection(clusterApiUrl('devnet'))
+// Les CLUSTER fra miljøvariabelen
+const CLUSTER = (process.env.CLUSTER || 'devnet') as Cluster;
+
+// Valider at CLUSTER er en gyldig verdi
+if (!['devnet', 'testnet', 'mainnet-beta'].includes(CLUSTER)) {
+  throw new Error(`Invalid CLUSTER value: ${CLUSTER}. Must be 'devnet', 'testnet', or 'mainnet-beta'.`);
+}
+console.log(`Using network: ${CLUSTER}`);
+
+const connection = new Connection(clusterApiUrl(CLUSTER));
+
 const user = await getKeypairFromFile()
 await airdropIfRequired(
   connection,
