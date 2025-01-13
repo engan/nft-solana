@@ -1,6 +1,6 @@
 # NFT project with political satire illustrations generated with artificial intelligence.
 
-![Skjermbilde 2025-01-10 145843](https://github.com/user-attachments/assets/13dc8997-ed80-4354-bbba-b7f40e7c68ae))
+![Skjermbilde 2025-01-10 145843](https://github.com/user-attachments/assets/13dc8997-ed80-4354-bbba-b7f40e7c68ae)
 
 ## Important note
 
