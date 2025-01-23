@@ -68,6 +68,7 @@ Install packages locally
 pnpm add @metaplex-foundation/umi@latest @solana/web3.js@latest
 pnpm add @metaplex-foundation/mpl-token-metadata@latest
 pnpm add @metaplex-foundation/umi-bundle-defaults@latest
+pnpm add @solana/spl-token@latest
  (Also required to upload files to Arweave via Irys.)
 
 Install support for the Arweave library
@@ -94,12 +95,17 @@ bs58.encode is used to convert the key to Base58,
 since Node.js does not support 'base58' in Buffer.toString.
 pnpm add bs58
 
+Enables us to execute TypeScript files directly
+added to devDependencies-section (with -D)
+npm add -D ts-node
+
+
 Run irys-upload.ts to upload all necessary files:
 npx esrun 1-irys-upload.ts
 
 Once the files are uploaded, check them via the gateway:
-Irys: https://gateway.irys.xyz/[ transaction-id]
-Arweave: https://arweave.net/[transaction-id]
+Irys: https://gateway.irys.xyz/[ transaction-id]    (devnet)
+Arweave: https://arweave.net/[transaction-id]       (mainnet-beta)
 
 Run create-collection.ts to create a collection NFT:
 npx esrun 2-create-collection.ts
@@ -110,12 +116,22 @@ npx esrun 3-create-nfts.ts
 Run verify-nft.ts to verify NFTs:
 npx esrun 4-verify-nfts.ts
 
+Fjern feilmelding
+export NODE_OPTIONS="--no-deprecation"
 
 Alternativt spesifiser nettverket direkte ved kjøring
 CLUSTER=devnet npx esrun 1-irys-upload.ts
 CLUSTER=devnet npx esrun 2-create-collection.ts
 CLUSTER=devnet npx esrun 3-create-nfts.ts
-CLUSTER=devnet npx ts-node 4-verify-nfts.ts
+CLUSTER=devnet npx esrun 4-verify-nfts.ts
+
+installer avhengigheter i proskjektet
+pnpm install
+
+
+pnpm add @metaplex-foundation/mpl-token-auth-rules@latest
+
+
 
 
 For å overføre arbeidet ditt fra devnet til mainnet med ekte Solana og Arweave, 
