@@ -1,6 +1,23 @@
 # pNFT (programmable NFTs) project with political satire illustrations generated with artificial intelligence.
 
-![Skjermbilde 2025-01-10 145843](https://github.com/user-attachments/assets/13dc8997-ed80-4354-bbba-b7f40e7c68ae)
+| Dependency                                      | Status    |
+|-------------------------------------------------|-----------|
+| `@metaplex-foundation/umi`                      | ✅ Installed |
+| `@metaplex-foundation/mpl-token-metadata`       | ✅ Installed |
+| `@metaplex-foundation/umi-bundle-defaults`      | ✅ Installed |
+| `@metaplex-foundation/mpl-token-auth-rules`     | ✅ Installed |
+| `@solana/spl-token`                             | ✅ Installed |
+| `@solana-developers/helpers`                    | ✅ Installed |
+| `@solana/web3.js`                               | ✅ Installed |
+| `@irys/upload`                                  | ✅ Installed |
+| `@irys/upload-solana`                           | ✅ Installed |
+| `arweave`                                       | ✅ Installed |
+| `@types/node`                                   | ✅ Installed |
+| `dotenv`                                        | ✅ Installed |
+| `esrun`                                         | ✅ Installed |
+| `bs58`                                          | ✅ Installed |
+| `ts-node` (devDependencies)                     | ✅ Installed |
+
 
 **A satirical pNFT project depicting themes such as power, corruption and irony, with AI-generated art.**
 
@@ -25,8 +42,6 @@ Ensure you have the following installed:
 *   **Node.js & npm**
 *   **pnpm** (install globally: `npm install -g pnpm`)
 *   **Solana CLI**
-*   **Rust & Cargo**
-*   **Anchor CLI**
 *   **nvm (Node Version Manager)** (optional, but recommended)
 
 Verify versions of key tools in your terminal:
@@ -37,9 +52,6 @@ node --version
 npm --version
 pnpm --version
 solana --version
-rustc --version
-cargo --version
-anchor --version
 
 You can check globally installed packages using:
 
@@ -94,20 +106,21 @@ npm list -g --depth=0
     Install necessary packages using pnpm:
 
     ```bash
-    pnpm add @metaplex-foundation/umi@latest @solana/web3.js@latest
-    pnpm add @metaplex-foundation/mpl-token-metadata@latest
-    pnpm add @metaplex-foundation/umi-bundle-defaults@latest
-    pnpm add @solana/spl-token@latest
-    pnpm add arweave@latest
-    pnpm add @types/node@latest
-    pnpm add dotenv@latest
-    pnpm add @solana-developers/helpers@latest
-    pnpm add @irys/upload@latest
-    pnpm add @irys/upload-solana@latest
-    pnpm add esrun@latest
+    pnpm add @metaplex-foundation/umi@latest @solana/web3.js
+    pnpm add @metaplex-foundation/mpl-token-metadata
+    pnpm add @metaplex-foundation/umi-bundle-defaults
+    pnpm add @metaplex-foundation/mpl-token-auth-rules
+    pnpm add @solana/spl-token
+    pnpm add @solana-developers/helpers   
+    pnpm add @solana/web3.js
+    pnpm add @irys/upload
+    pnpm add @irys/upload-solana
+    pnpm add arweave
+    pnpm add @types/node
+    pnpm add dotenv   
+    pnpm add esrun
     pnpm add bs58
     pnpm add -D ts-node
-    pnpm add @metaplex-foundation/mpl-token-auth-rules@latest
     ```
 
     After adding all packages, install project dependencies:
@@ -119,9 +132,9 @@ npm list -g --depth=0
 
 This project includes scripts to upload assets, create a collection NFT, create individual NFTs, and verify NFTs.
 
-### 1. Upload Assets to Irys and Arweave
+### 1. Upload Assets to Irys
 
-Run `1-irys-upload.ts` to upload images and metadata to Irys and Arweave. This script will:
+Run `1-irys-uploads.ts` to upload images and metadata to Irys and Arweave. This script will:
 
 *   Read image and metadata files from `./assets/images/collection`, `./assets/metadata/collection`, `./assets/images/nfts`, and `./assets/metadata/nfts` folders.
 *   Upload files to Irys.
@@ -136,17 +149,60 @@ npx esrun 1-irys-upload.ts
 Alternatively, specify the network directly:
 
 ```bash
-CLUSTER=devnet npx esrun 1-irys-upload.ts
+CLUSTER=devnet npx esrun 1-irys-uploads.ts
 ```
 
 After successful upload, you will receive transaction IDs. You can check the uploaded files via the gateways:
 
-*   **Irys (Devnet):** `https://gateway.irys.xyz/[transaction-id]`
-*   **Arweave (Mainnet-beta):** `https://arweave.net/[transaction-id]`
+*   **Irys (Devnet and Mainnet):** `https://gateway.irys.xyz/[transaction-id]`
 
-### 2. Create Collection NFT
+### 2. Upload Assets to Arweave
 
-Run `2-create-collection.ts` to create a collection NFT on Solana. This script will:
+Run `1-arweave-uploads.ts` to upload images and metadata to Irys and Arweave. This script will:
+
+*   Read image and metadata files from `./assets/images/collection`, `./assets/metadata/collection`, `./assets/images/nfts`, and `./assets/metadata/nfts` folders.
+*   Upload files to Arweave (mainnet only).
+*   Update metadata files with Arweave URLs for images and metadata.
+
+Run the script:
+
+```bash
+npx esrun 1-arweave-uploads.ts
+```
+
+Alternatively, specify the network directly:
+
+```bash
+CLUSTER=devnet npx esrun 1-arweave-uploads.ts
+```
+
+After successful upload, you will receive transaction IDs. You can check the uploaded files via the gateways:
+
+*   **Arweave (Mainnet):** `https://arweave.net/[transaction-id]`
+
+### 3. Create RuleSet for Programmable NFTs (pNFTs)
+
+Run `2-create-ruleset.ts` to create a ruleset for Programmable NFTs on Solana. This script will:
+
+*   Read ruleset metadata from `./assets/cache`.
+*   Create a RuleSet to Programmable NFT (pNFT) if not existing
+*   Save the ruleseth address to `./assets/cache/ruleset-address.json`.
+
+Run the script:
+
+```bash
+npx esrun 2-create-ruleset.ts
+```
+
+Alternatively, specify the network directly:
+
+```bash
+CLUSTER=devnet npx esrun 2-create-ruleset.ts
+```
+
+### 4. Create Collection NFT
+
+Run `3-create-collection.ts` to create a collection NFT on Solana. This script will:
 
 *   Read collection metadata from `./assets/metadata/collection`.
 *   Create a Programmable NFT (pNFT) as a collection with defined Rule Set.
@@ -155,18 +211,18 @@ Run `2-create-collection.ts` to create a collection NFT on Solana. This script w
 Run the script:
 
 ```bash
-npx esrun 2-create-collection.ts
+npx esrun 3-create-collection.ts
 ```
 
 Alternatively, specify the network directly:
 
 ```bash
-CLUSTER=devnet npx esrun 2-create-collection.ts
+CLUSTER=devnet npx esrun 3-create-collection.ts
 ```
 
-### 3. Create Individual NFTs
+### 5. Create Individual NFTs
 
-Run `3-create-nfts.ts` to create individual NFTs and associate them with the created collection. This script will:
+Run `4-create-pnfts.ts` to create individual NFTs and associate them with the created collection. This script will:
 
 *   Read NFT metadata from `./assets/metadata/nfts`.
 *   Create Programmable NFTs (pNFTs) for each metadata file.
@@ -176,18 +232,18 @@ Run `3-create-nfts.ts` to create individual NFTs and associate them with the cre
 Run the script:
 
 ```bash
-npx esrun 3-create-nfts.ts
+npx esrun 4-create-pnfts.ts
 ```
 
 Alternatively, specify the network directly:
 
 ```bash
-CLUSTER=devnet npx esrun 3-create-nfts.ts
+CLUSTER=devnet npx esrun 4-create-pnfts.ts
 ```
 
-### 4. Verify NFTs
+### 6. Verify NFTs
 
-Run `4-verify-nfts.ts` to verify the created NFTs as members of the collection. This script will:
+Run `5-verify-pnfts.ts` to verify the created NFTs as members of the collection. This script will:
 
 *   Read collection and NFT addresses from cache files in `./assets/cache`.
 *   Verify the collection NFT (if it's a regular NFT, verification for pNFT collections is skipped as `verifyCollection` is not supported for pNFT collections).
@@ -196,13 +252,13 @@ Run `4-verify-nfts.ts` to verify the created NFTs as members of the collection. 
 Run the script:
 
 ```bash
-npx esrun 4-verify-nfts.ts
+npx esrun 5-verify-pnfts.ts
 ```
 
 Alternatively, specify the network directly:
 
 ```bash
-CLUSTER=devnet npx esrun 4-verify-nfts.ts
+CLUSTER=devnet npx esrun 5-verify-pnfts.ts
 ```
 
 ## Deploy to Mainnet
@@ -261,10 +317,15 @@ To deploy your project to Mainnet-beta with real Solana and Arweave, follow thes
 
 ## File Descriptions
 
-*   **`1-irys-upload.ts`**: Uploads images and metadata files to Irys and Arweave. It handles funding the Irys node, uploading collection and NFT assets, and updating local metadata files with uploaded URLs.
-*   **`2-create-collection.ts`**: Creates a Solana Programmable NFT (pNFT) to represent the NFT collection. It defines a Rule Set and mints the collection pNFT, saving its address to a cache file.
-*   **`3-create-nfts.ts`**: Creates individual Solana Programmable NFTs (pNFTs) for each metadata file in the `assets/metadata/nfts` directory. It associates them with the collection pNFT created by `2-create-collection.ts` and saves their addresses to a cache file.
-*   **`4-verify-nfts.ts`**: Verifies the created collection NFT and individual NFTs as members of the collection on the Solana blockchain. It skips verification for Programmable NFT collections and individual pNFTs due to current limitations of the `verifyCollection` instruction for pNFTs.
+*   **`0-convert-secret.ts`**: Converts a Solana secret key from Base58 format to a JSON array and saves it to a configuration file.
+*   **`0-read-wallet.ts`**: Reads a Solana wallet file and outputs the Base58 private key.
+*   **`1-arweave-uploads.ts`**: Uploads images and metadata files to Arweave. It handles uploading collection and NFT assets, and updating local metadata files with uploaded URLs.
+*   **`1-irys-uploads.ts`**: Uploads images and metadata files to Irys. It handles funding the Irys node, uploading collection and NFT assets, and updating local metadata files with uploaded URLs.
+*   **`2-create-ruleset.ts`**: Creates a Rule Set for enforcing royalties on Solana pNFTs. Checks if a Rule Set already exists; if not, it creates a new one with specified operations and permissions.
+*   **`3-create-collection.ts`**: Creates a Solana Programmable NFT (pNFT) to represent the NFT collection. It defines a Rule Set and mints the collection pNFT, saving its address to a cache file.
+*   **`4-create-pnfts.ts`**: Creates individual Solana Programmable NFTs (pNFTs) for each metadata file in the `assets/metadata/nfts` directory. It associates them with the collection pNFT created by `3-create-collection.ts` and saves their addresses to a cache file.
+*   **`5-verify-pnfts.ts`**: Verifies the created collection NFT and individual NFTs as members of the collection on the Solana blockchain. It skips verification for Programmable NFT collections and individual pNFTs due to current limitations of the `verifyCollection` instruction for pNFTs.
+*   **`6-burn-pnft.ts`**: Burns a specified Solana Programmable NFT (pNFT), returning a portion of the mint cost (about half the cost).
 
 ## Troubleshooting
 
@@ -276,6 +337,8 @@ To deploy your project to Mainnet-beta with real Solana and Arweave, follow thes
 
 *   **Irys Gateway (Devnet):** [https://gateway.irys.xyz/](https://gateway.irys.xyz/)
 *   **Arweave Gateway (Mainnet-beta):** [https://arweave.net/](https://arweave.net/)
+*   **Solscan (Devnet):** [https://solscan.io?cluster=devnet](https://solscan.io/?cluster=devnet)
+*   **Solscan (Mainnet-beta):** [https://solscan.io/](https://solscan.io/)
 *   **Solana Explorer (Devnet):** [https://explorer.solana.com/?cluster=devnet](https://explorer.solana.com/?cluster=devnet)
 *   **Solana Explorer (Mainnet-beta):** [https://explorer.solana.com/](https://explorer.solana.com/)
 

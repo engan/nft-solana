@@ -10,6 +10,16 @@
 // wsl
 chieftec@Chieftec-PC:~$
 
+For å installere Solana CLI
+sh -c "$(curl -sSfL https://release.solana.com/stable/install)"
+
+Legg Solana CLI til i PATH
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+Installer Irys (tidligere bundlr)
+npm install -g @irys/cli
+
+
 Check globally installed packages
 pnpm list -g --depth=0
 npm list -g --depth=0
@@ -29,12 +39,6 @@ pnpm --version
 9.15.2
 solana --version
 solana-cli 2.0.21 (src:99ac0105; feat:607245837, client:Agave)
-rustc --version
-rustc 1.79. 0 (129f3b996 2024-06-10)
-cargo --version
-cargo 1.79.0 (ffa9cf99a 2024-06-03)
-anchor --version
-anchor-cli 0.30.1
 
 Find folders in Windows Explorer
 \\wsl$\Ubuntu\
@@ -69,6 +73,7 @@ pnpm add @metaplex-foundation/umi@latest @solana/web3.js@latest
 pnpm add @metaplex-foundation/mpl-token-metadata@latest
 pnpm add @metaplex-foundation/umi-bundle-defaults@latest
 pnpm add @solana/spl-token@latest
+pnpm add @metaplex-foundation/umi-web3js-adapters
  (Also required to upload files to Arweave via Irys.)
 
 Install support for the Arweave library
@@ -120,10 +125,20 @@ Fjern feilmelding
 export NODE_OPTIONS="--no-deprecation"
 
 Alternativt spesifiser nettverket direkte ved kjøring
-CLUSTER=devnet npx esrun 1-irys-upload.ts
-CLUSTER=devnet npx esrun 2-create-collection.ts
-CLUSTER=devnet npx esrun 3-create-nfts.ts
-CLUSTER=devnet npx esrun 4-verify-nfts.ts
+CLUSTER=devnet npx esrun 1-irys-uploads.ts
+CLUSTER=devnet npx esrun 2-create-ruleset.ts
+CLUSTER=devnet npx esrun 3-create-collection.ts
+CLUSTER=devnet npx esrun 4-create-pnfts.ts
+CLUSTER=devnet npx esrun 5-verify-pnfts.ts
+CLUSTER=devnet npx esrun 6-burn-pnft.ts
+
+CLUSTER=mainnet npx esrun 1-irys-uploads.ts
+CLUSTER=mainnet npx esrun 1-arweave-uploads.ts
+CLUSTER=mainnet-beta npx esrun 2-create-ruleset.ts
+CLUSTER=mainnet-beta npx esrun 3-create-collection.ts
+CLUSTER=mainnet-beta npx esrun 4-create-pnfts.ts
+CLUSTER=mainnet-beta npx esrun 5-verify-pnfts.ts
+CLUSTER=mainnet-beta npx esrun 6-burn-pnft.ts
 
 installer avhengigheter i proskjektet
 pnpm install
@@ -187,3 +202,77 @@ Gasskostnader: Sørg for at du har tilstrekkelig SOL i lommeboken din til å dek
 Arweave opplastningsgebyr: Sørg for at Arweave-lommeboken har tilstrekkelige midler for å betale for permanent lagring.
 Test alt nøye før du satser på større ressurser.
 Når du har gjennomført dette, vil du være klar til å operere på mainnet med ekte Solana og Arweave-integrasjon!
+
+
+
+Filrettigheter: 
+Sørg for at nøkkelfilene har strenge filrettigheter, slik at kun deg kan lese dem.
+chmod 600 ~/.config/solana/devnet-id.json
+chmod 600 ~/.config/solana/mainnet-id.json
+
+Sikkerhetskopiering: 
+Sørg for at du har sikre sikkerhetskopier av dine nøkkelfiler og seed-fraser på et trygt sted.
+
+Sjekk solana config:
+solana config get
+
+Solana devnet
+solana config set --url https://api.devnet.solana.com
+solana config set --keypair ~/NFT-projects/Solana/drain-the-swamp/wallets/devnet-id.json 
+
+Solana mainnet-beta
+solana config set --url https://api.mainnet-beta.solana.com
+solana config set --keypair ~/NFT-projects/Solana/drain-the-swamp/wallets/mainnet-id.json 
+
+
+Bruke .env.devnet (solana config inkludert):
+CLUSTER=devnet pnpm run 1-irys-uploads:devnet
+
+Beregn bruk av AR token:
+https://ardrive.io/how-much-does-it-cost-to-store-on-arweave/
+
+Bruke .env.mainnet (solana config inkludert):
+CLUSTER=mainnet pnpm run 1-irys-uploads:mainnet
+
+
+
+
+Her er en ASCII-tabell som viser hvordan ulike kombinasjoner av Compute Unit Limit og Compute Unit Price 
+påvirker den totale kostnaden for en minting-prosess, med en grunnpris på 0,02 SOL:
+
++---------------------+-------------------------------+------------------------+--------------------+
+| Compute Unit Limit  | Compute Unit Price (μLamports) | Prioritetsavgift (SOL) | Total kostnad (SOL) |
++---------------------+-------------------------------+------------------------+--------------------+
+|             200 000 |                           0    |               0        |                     |
+|             200 000 |                         500    |               0,0001   |         0,02010474  |
+|             200 000 |                       1 000    |               0,0002   |         0,02020474  |
+|             200 000 |                       2 000    |               0,0004   |         0,02040474  |
+|             500 000 |                         500    |               0,00025  |         0,02135474  |
+|             500 000 |                       1 000    |               0,0005   |         0,02160474  |
+|             500 000 |                       2 000    |               0,001    |         0,02210474  |
+|           1 000 000 |                         500    |               0,0005   |         0,02160474  |
+|           1 000 000 |                       1 000    |               0,001    |         0,02210474  |
+|           1 000 000 |                       2 000    |               0,002    |         0,02310474  |
+|           1 400 000 |                         500    |               0,0007   |         0,02180474  |
+|           1 400 000 |                       1 000    |               0,0014   |         0,02250474  |
+|           1 400 000 |                       2 000    |               0,0028   |         0,02390474  |
++---------------------+-------------------------------+------------------------+--------------------+
+
+Merk: Prioritetsavgiften beregnes som Compute Unit Limit × Compute Unit Price. For eksempel vil 
+en Compute Unit Limit på 200 000 og en Compute Unit Price på 1 000 μLamports resultere i 
+en prioritetsavgift på 0,0002 SOL (200 000 × 1 000 μLamports = 200 000 000 μLamports = 0,0002 SOL).
+
+Ved å justere disse verdiene kan du balansere mellom kostnad og prioritet for dine transaksjoner. 
+Høyere prioritetsavgifter kan føre til raskere behandling, spesielt under høy nettverksbelastning.
+
+
+pNFT-er på mainnet-beta
+5pPzfYaTaPjfk9HKJKm7xkKCKd9y1CmTW1nYDbBXcZv3
+8bx1rEJidVHzSdoeuvRVxb9yjswPzjC24NQXFb4Wjvi4
+EWgzg3FFPyrtumLiy2ecfnRSEtJqfWU9QJGy3Ww3ahnk
+BZKSAp7zVFezQLAQz2MVH9kSxJoodvDRvdQor1yAUGhi
+4aDfp4g9diVhvctgPfX2rjAVrMj88iDraLBEJGjWoB9H
+75ZaXVTeHCajB1WJ3ChnaDW4go6rRJRYsAiJRQ5Ni7ac
+D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD
+FBvCVbUEDLKSvQ5QiQnXtRurdKrgaWw78TPPfDJ5waVk
+

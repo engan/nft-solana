@@ -1,9 +1,19 @@
 {
-  "name": "Drain the Swamp #3",
+  "name": "DTS #03/12",
   "symbol": "DTS",
-  "description": "A depiction of a leader obsessed with constructing barriers, laughing amidst the wealth of those who benefit from division.",
-  "image": "https://devnet.irys.xyz/BRXzm8Z6E6QUjGCCkVKNWz1v5ur2LeVikxhzJ2oBTL3j",
+  "description": "A depiction of a leader obsessed with constructing barriers, laughing amidst the wealth of those who benefit from division.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/oPA7Ns9dpdRbBE1kZSnGEL6JZqeNOk4fvEr2KNnjgTo",
+  "animation_url": "",
+  "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
   "attributes": [
     {
       "trait_type": "Theme",
@@ -12,6 +22,10 @@
     {
       "trait_type": "Art Style",
       "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 01: Drain the Swamp"
     },
     {
       "trait_type": "Money Presence",
@@ -34,15 +48,37 @@
       "value": "Maniacal Laugh"
     }
   ],
-  "transactionId": "EKgbASUDuYKcDEJeRzS8CHTr5nZZ3PaAuThvgLUFw3PA",
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "oPA7Ns9dpdRbBE1kZSnGEL6JZqeNOk4fvEr2KNnjgTo",
+      "file": {
+        "uri": "https://arweave.net/oPA7Ns9dpdRbBE1kZSnGEL6JZqeNOk4fvEr2KNnjgTo",
+        "type": "image/png",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "2LCB8A923ajfSswVo5RFuM-RfHZjoJfx0o1iNg9NsnI",
+      "file": {
+        "uri": "https://arweave.net/2LCB8A923ajfSswVo5RFuM-RfHZjoJfx0o1iNg9NsnI",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Drain the Swamp - Volume 01",
+    "family": "Political Satire AI"
+  },
   "properties": {
+    "category": "image",
     "files": [
       {
-        "uri": "https://devnet.irys.xyz/BRXzm8Z6E6QUjGCCkVKNWz1v5ur2LeVikxhzJ2oBTL3j",
-        "type": "image/png"
+        "uri": "https://arweave.net/oPA7Ns9dpdRbBE1kZSnGEL6JZqeNOk4fvEr2KNnjgTo",
+        "type": "image/png",
+        "description": "Arweave image file"
       }
-    ],
-    "category": "image"
+    ]
   },
-  "uri": "https://devnet.irys.xyz/FnehDGpr2YERDnn3AE9if7c5oWCjx8HdjWiMqBnevqrG"
+  "uri": "https://arweave.net/2LCB8A923ajfSswVo5RFuM-RfHZjoJfx0o1iNg9NsnI"
 }

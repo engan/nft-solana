@@ -1,9 +1,19 @@
 {
-  "name": "Drain the Swamp #4",
+  "name": "DTS #04/12",
   "symbol": "DTS",
-  "description": "A humorous take on a wealthy figure finding loopholes to avoid taxes while being surrounded by power brokers and money.",
-  "image": "https://devnet.irys.xyz/3oA1MpL7Q2bgfqWp1qR1jAxxxMEJZ3gTdkEHc2CcM3yB",
+  "description": "A humorous take on a wealthy figure finding loopholes to avoid taxes while being surrounded by power brokers and money.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/MO3CsQoR3beCqn69mDv_1ADTIAiASGUTNPt9oQRtidQ",
+  "animation_url": "",
+  "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
   "attributes": [
     {
       "trait_type": "Theme",
@@ -12,6 +22,10 @@
     {
       "trait_type": "Art Style",
       "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 01: Drain the Swamp"
     },
     {
       "trait_type": "Money Presence",
@@ -34,15 +48,37 @@
       "value": "Maniacal Laugh"
     }
   ],
-  "transactionId": "6r6cWmj5GRkH1HLVkQVqNYAwY2FvRLiW1xhkJG15v6CZ",
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "MO3CsQoR3beCqn69mDv_1ADTIAiASGUTNPt9oQRtidQ",
+      "file": {
+        "uri": "https://arweave.net/MO3CsQoR3beCqn69mDv_1ADTIAiASGUTNPt9oQRtidQ",
+        "type": "image/png",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "b-E4oFNJD9-pnzDZp0-0l3zJa11ewjtqgAkc96UaRRI",
+      "file": {
+        "uri": "https://arweave.net/b-E4oFNJD9-pnzDZp0-0l3zJa11ewjtqgAkc96UaRRI",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Drain the Swamp - Volume 01",
+    "family": "Political Satire AI"
+  },
   "properties": {
+    "category": "image",
     "files": [
       {
-        "uri": "https://devnet.irys.xyz/3oA1MpL7Q2bgfqWp1qR1jAxxxMEJZ3gTdkEHc2CcM3yB",
-        "type": "image/png"
+        "uri": "https://arweave.net/MO3CsQoR3beCqn69mDv_1ADTIAiASGUTNPt9oQRtidQ",
+        "type": "image/png",
+        "description": "Arweave image file"
       }
-    ],
-    "category": "image"
+    ]
   },
-  "uri": "https://devnet.irys.xyz/Ancc3cz84ixcP3KoUx65JmNpe7eXZxJzP9KqifTXf8dr"
+  "uri": "https://arweave.net/b-E4oFNJD9-pnzDZp0-0l3zJa11ewjtqgAkc96UaRRI"
 }

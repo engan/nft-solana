@@ -1,0 +1,5 @@
+Store your 3 wallets here:
+
+areweave.json	Areweave AR token
+devnet-id.json	Solana test token: solana airdrop 2
+minnet-id.json	Solana token

@@ -1,9 +1,19 @@
 {
-  "name": "Drain the Swamp #6",
+  "name": "DTS #06/12",
   "symbol": "DTS",
-  "description": "A satire of a leader promoting peace while engaging in conflict, surrounded by the wealth of those benefiting from the chaos.",
-  "image": "https://devnet.irys.xyz/5vnsTLGkXxvKLXCyjMK1QpLkZL9UpwNd8GqHNBUSMWen",
+  "description": "A satire of a leader promoting peace while engaging in conflict, surrounded by the wealth of those benefiting from the chaos.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/87OmVhOUAuTFeygVHziEuyZFSwpZCYjZoX3Tyz0R7Mk",
+  "animation_url": "",
+  "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
   "attributes": [
     {
       "trait_type": "Theme",
@@ -12,6 +22,10 @@
     {
       "trait_type": "Art Style",
       "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 01: Drain the Swamp"
     },
     {
       "trait_type": "Money Presence",
@@ -34,15 +48,37 @@
       "value": "Maniacal Laugh"
     }
   ],
-  "transactionId": "ENwrGizjJPaYedAZHe5TV23Wrqc5tm7FCEyLAx4RXVHb",
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "87OmVhOUAuTFeygVHziEuyZFSwpZCYjZoX3Tyz0R7Mk",
+      "file": {
+        "uri": "https://arweave.net/87OmVhOUAuTFeygVHziEuyZFSwpZCYjZoX3Tyz0R7Mk",
+        "type": "image/png",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "ZCSUfsmoum0fpb4jWNAXfjKOOXYDmpvvbOhOw2BbBRM",
+      "file": {
+        "uri": "https://arweave.net/ZCSUfsmoum0fpb4jWNAXfjKOOXYDmpvvbOhOw2BbBRM",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Drain the Swamp - Volume 01",
+    "family": "Political Satire AI"
+  },
   "properties": {
+    "category": "image",
     "files": [
       {
-        "uri": "https://devnet.irys.xyz/5vnsTLGkXxvKLXCyjMK1QpLkZL9UpwNd8GqHNBUSMWen",
-        "type": "image/png"
+        "uri": "https://arweave.net/87OmVhOUAuTFeygVHziEuyZFSwpZCYjZoX3Tyz0R7Mk",
+        "type": "image/png",
+        "description": "Arweave image file"
       }
-    ],
-    "category": "image"
+    ]
   },
-  "uri": "https://devnet.irys.xyz/WVeixppLT1BYMCK2pHa9ZDwWMujdPZqeC9KtnNiCg6k"
+  "uri": "https://arweave.net/ZCSUfsmoum0fpb4jWNAXfjKOOXYDmpvvbOhOw2BbBRM"
 }

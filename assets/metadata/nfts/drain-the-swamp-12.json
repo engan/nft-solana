@@ -1,9 +1,19 @@
 {
-  "name": "Drain the Swamp #12",
+  "name": "DTS #12/12",
   "symbol": "DTS",
-  "description": "An image of a politician manipulating the justice system, surrounded by billionaires with stacks of money.",
-  "image": "https://devnet.irys.xyz/CrdZAXZDGJDvdXFgQVFYNUas9fNgCPhb8BdpmRpQRMfw",
+  "description": "An image of a politician manipulating the justice system, surrounded by billionaires with stacks of money.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/z9cDasX74RucLTfgwBCIUXrXVvcSUGd708W_TSN3ozg",
+  "animation_url": "",
+  "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
   "attributes": [
     {
       "trait_type": "Theme",
@@ -12,6 +22,10 @@
     {
       "trait_type": "Art Style",
       "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 01: Drain the Swamp"
     },
     {
       "trait_type": "Money Presence",
@@ -34,15 +48,37 @@
       "value": "Maniacal Laugh"
     }
   ],
-  "transactionId": "2zcRCeR1T5uXcktQzDkykkfnEMnpseobjbW85pBpUvPz",
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "z9cDasX74RucLTfgwBCIUXrXVvcSUGd708W_TSN3ozg",
+      "file": {
+        "uri": "https://arweave.net/z9cDasX74RucLTfgwBCIUXrXVvcSUGd708W_TSN3ozg",
+        "type": "image/png",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "Bfmjvh_Xkc6hfHRiF9R1GfyHe_cnAUu1XpVHUCZw0VU",
+      "file": {
+        "uri": "https://arweave.net/Bfmjvh_Xkc6hfHRiF9R1GfyHe_cnAUu1XpVHUCZw0VU",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Drain the Swamp - Volume 01",
+    "family": "Political Satire AI"
+  },
   "properties": {
+    "category": "image",
     "files": [
       {
-        "uri": "https://devnet.irys.xyz/CrdZAXZDGJDvdXFgQVFYNUas9fNgCPhb8BdpmRpQRMfw",
-        "type": "image/png"
+        "uri": "https://arweave.net/z9cDasX74RucLTfgwBCIUXrXVvcSUGd708W_TSN3ozg",
+        "type": "image/png",
+        "description": "Arweave image file"
       }
-    ],
-    "category": "image"
+    ]
   },
-  "uri": "https://devnet.irys.xyz/5E7AUeVoMHhum1ZjLKNqMDbyfThFJpiHZP2r5oe2VAYE"
+  "uri": "https://arweave.net/Bfmjvh_Xkc6hfHRiF9R1GfyHe_cnAUu1XpVHUCZw0VU"
 }

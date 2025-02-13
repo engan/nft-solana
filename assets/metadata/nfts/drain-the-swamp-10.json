@@ -1,9 +1,19 @@
 {
-  "name": "Drain the Swamp #10",
+  "name": "DTS #10/12",
   "symbol": "DTS",
-  "description": "An illustration of a politician resisting social equality movements, surrounded by power and wealth.",
-  "image": "https://devnet.irys.xyz/6376sgcDHqJ4ysA6BoBcLUarpGR8DdPhJeMioxJDAVmh",
+  "description": "An illustration of a politician resisting social equality movements, surrounded by power and wealth.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/8aTfATBxB2ZhbF2ccwemt7QWR5bKWE6CfQWBKfoIyFs",
+  "animation_url": "",
+  "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
   "attributes": [
     {
       "trait_type": "Theme",
@@ -12,6 +22,10 @@
     {
       "trait_type": "Art Style",
       "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 01: Drain the Swamp"
     },
     {
       "trait_type": "Money Presence",
@@ -34,15 +48,37 @@
       "value": "Maniacal Laugh"
     }
   ],
-  "transactionId": "F4ENLbRrdKrhh2u8D41JWcmpc4VroDGBb7tFLPL7FLbN",
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "8aTfATBxB2ZhbF2ccwemt7QWR5bKWE6CfQWBKfoIyFs",
+      "file": {
+        "uri": "https://arweave.net/8aTfATBxB2ZhbF2ccwemt7QWR5bKWE6CfQWBKfoIyFs",
+        "type": "image/png",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "2wlU-EuV9x3RHfhMDMBkbSRwSa1XlrIenXJ-X6QXIpQ",
+      "file": {
+        "uri": "https://arweave.net/2wlU-EuV9x3RHfhMDMBkbSRwSa1XlrIenXJ-X6QXIpQ",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Drain the Swamp - Volume 01",
+    "family": "Political Satire AI"
+  },
   "properties": {
+    "category": "image",
     "files": [
       {
-        "uri": "https://devnet.irys.xyz/6376sgcDHqJ4ysA6BoBcLUarpGR8DdPhJeMioxJDAVmh",
-        "type": "image/png"
+        "uri": "https://arweave.net/8aTfATBxB2ZhbF2ccwemt7QWR5bKWE6CfQWBKfoIyFs",
+        "type": "image/png",
+        "description": "Arweave image file"
       }
-    ],
-    "category": "image"
+    ]
   },
-  "uri": "https://devnet.irys.xyz/2r6YRNKAiEJneS8NKNK7kUwLWX73u7cNwNxon7XqJwuU"
+  "uri": "https://arweave.net/2wlU-EuV9x3RHfhMDMBkbSRwSa1XlrIenXJ-X6QXIpQ"
 }

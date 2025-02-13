@@ -1,9 +1,19 @@
 {
-  "name": "Drain the Swamp #2",
+  "name": "DTS #02/12",
   "symbol": "DTS",
-  "description": "An illustration of a leader ignoring environmental crises, surrounded by billionaires and stacks of money, emphasizing greed over responsibility.",
-  "image": "https://devnet.irys.xyz/FRTm7Hf1BuPn8qeeEm1CWbgubLs9drDd5ix9vLkDuPMY",
+  "description": "An illustration of a leader ignoring environmental crises, surrounded by billionaires and stacks of money, emphasizing greed over responsibility.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/c9FV5TlrqjbZ8QK5vhweSrekKo43NmF4ittYqdDGJXQ",
+  "animation_url": "",
+  "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
   "attributes": [
     {
       "trait_type": "Theme",
@@ -12,6 +22,10 @@
     {
       "trait_type": "Art Style",
       "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 01: Drain the Swamp"
     },
     {
       "trait_type": "Money Presence",
@@ -34,15 +48,37 @@
       "value": "Maniacal Laugh"
     }
   ],
-  "transactionId": "36trUH3XhhYuBXJUToVtYGRjUf7isoydE3RsmviL2dqv",
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "c9FV5TlrqjbZ8QK5vhweSrekKo43NmF4ittYqdDGJXQ",
+      "file": {
+        "uri": "https://arweave.net/c9FV5TlrqjbZ8QK5vhweSrekKo43NmF4ittYqdDGJXQ",
+        "type": "image/png",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "KyEG88xilbM9ywM2c9OuR9FEdmxa62aiMS9xgqWcrds",
+      "file": {
+        "uri": "https://arweave.net/KyEG88xilbM9ywM2c9OuR9FEdmxa62aiMS9xgqWcrds",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Drain the Swamp - Volume 01",
+    "family": "Political Satire AI"
+  },
   "properties": {
+    "category": "image",
     "files": [
       {
-        "uri": "https://devnet.irys.xyz/FRTm7Hf1BuPn8qeeEm1CWbgubLs9drDd5ix9vLkDuPMY",
-        "type": "image/png"
+        "uri": "https://arweave.net/c9FV5TlrqjbZ8QK5vhweSrekKo43NmF4ittYqdDGJXQ",
+        "type": "image/png",
+        "description": "Arweave image file"
       }
-    ],
-    "category": "image"
+    ]
   },
-  "uri": "https://devnet.irys.xyz/5MszXBXf4iMZXoB45cBzntWLFNNGv6UeNBowPoBcwSrd"
+  "uri": "https://arweave.net/KyEG88xilbM9ywM2c9OuR9FEdmxa62aiMS9xgqWcrds"
 }
