@@ -83,24 +83,11 @@ npm list -g --depth=0
     solana config set --url https://api.mainnet-beta.solana.com
     ```
 
-3.  **.env File Configuration**:
-    Create a `.env` file in your project root and add the following environment variables. You will need to provide your private key as a JSON array or Base58 encoded string and configure network URLs.
-
-    ```env
-    PRIVATE_KEY="[YOUR_SOLANA_PRIVATE_KEY_JSON_ARRAY]"
-    BASE_IRYS_URL=https://devnet.irys.xyz
-    BASE_ARWEAVE_URL=https://arweave.net
-    CLUSTER=devnet
-    ASSETS_PATH=./assets
-    KEYPAIR_PATH=/home/chieftec/.config/solana/id.json
+3.  **.env Files Configuration**:
+    The project now uses three separate `.env` files for different environments: `.env.devnet`, `.env.mainnet`, and `.env.mainnet-beta`. Each file contains environment variables specific to the network it represents. 
+    ```bash
+    Comments can be found inside the .env files.
     ```
-
-    *   Replace `[YOUR_SOLANA_PRIVATE_KEY_JSON_ARRAY]` with your Solana private key as a JSON array of numbers.
-    *   `BASE_IRYS_URL`:  URL for Irys gateway (Devnet by default). For Mainnet use `https://mainnet.irys.xyz`.
-    *   `BASE_ARWEAVE_URL`: URL for Arweave gateway (Devnet by default, Mainnet is `https://arweave.net`).
-    *   `CLUSTER`: Solana network to use (`devnet`, `testnet`, or `mainnet-beta`).
-    *   `ASSETS_PATH`: Path to your assets folder (images and metadata).
-    *   `KEYPAIR_PATH`: Path to your Solana keypair file.
 
 4.  **Install Dependencies**:
     Install necessary packages using pnpm:
@@ -123,7 +110,7 @@ npm list -g --depth=0
     pnpm add -D ts-node
     ```
 
-    After adding all packages, install project dependencies:
+    You don't need to install each package since they are defined in package.json. All you need to do is run the following command::
     ```bash
     pnpm install
     ```
@@ -326,6 +313,22 @@ To deploy your project to Mainnet-beta with real Solana and Arweave, follow thes
 *   **`4-create-pnfts.ts`**: Creates individual Solana Programmable NFTs (pNFTs) for each metadata file in the `assets/metadata/nfts` directory. It associates them with the collection pNFT created by `3-create-collection.ts` and saves their addresses to a cache file.
 *   **`5-verify-pnfts.ts`**: Verifies the created collection NFT and individual NFTs as members of the collection on the Solana blockchain. It skips verification for Programmable NFT collections and individual pNFTs due to current limitations of the `verifyCollection` instruction for pNFTs.
 *   **`6-burn-pnft.ts`**: Burns a specified Solana Programmable NFT (pNFT), returning a portion of the mint cost (about half the cost).
+
+## Drain the Swamp collection NFT and pNFTs on Solana mainnet-beta
+
+*   **Drain the Swamp Collection, NFT:** [https://solscan.io/token/CTYCQnJGhscthhBobKJJxFe5MMxPdpgFFx8aGidiFDfs](https://solscan.io/token/CTYCQnJGhscthhBobKJJxFe5MMxPdpgFFx8aGidiFDfs)
+*   **DTS #01/12, pNFT:** [https://solscan.io/token/5pPzfYaTaPjfk9HKJKm7xkKCKd9y1CmTW1nYDbBXcZv3](https://solscan.io/token/5pPzfYaTaPjfk9HKJKm7xkKCKd9y1CmTW1nYDbBXcZv3)
+*   **DTS #02/12, pNFT:** [https://solscan.io/token/8bx1rEJidVHzSdoeuvRVxb9yjswPzjC24NQXFb4Wjvi4](https://solscan.io/token/8bx1rEJidVHzSdoeuvRVxb9yjswPzjC24NQXFb4Wjvi4)
+*   **DTS #03/12, pNFT:** [https://solscan.io/token/EWgzg3FFPyrtumLiy2ecfnRSEtJqfWU9QJGy3Ww3ahnk](https://solscan.io/token/EWgzg3FFPyrtumLiy2ecfnRSEtJqfWU9QJGy3Ww3ahnk)
+*   **DTS #04/12, pNFT:** [https://solscan.io/token/BZKSAp7zVFezQLAQz2MVH9kSxJoodvDRvdQor1yAUGhi](https://solscan.io/token/BZKSAp7zVFezQLAQz2MVH9kSxJoodvDRvdQor1yAUGhi)
+*   **DTS #05/12, pNFT:** [https://solscan.io/token/4aDfp4g9diVhvctgPfX2rjAVrMj88iDraLBEJGjWoB9H](https://solscan.io/token/4aDfp4g9diVhvctgPfX2rjAVrMj88iDraLBEJGjWoB9H)
+*   **DTS #06/12, pNFT:** [https://solscan.io/token/75ZaXVTeHCajB1WJ3ChnaDW4go6rRJRYsAiJRQ5Ni7ac](https://solscan.io/token/75ZaXVTeHCajB1WJ3ChnaDW4go6rRJRYsAiJRQ5Ni7ac)
+*   **DTS #07/12, pNFT:** [https://solscan.io/token/D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD](https://solscan.io/token/D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD)
+*   **DTS #08/12, pNFT:** [https://solscan.io/token/FBvCVbUEDLKSvQ5QiQnXtRurdKrgaWw78TPPfDJ5waVk](https://solscan.io/token/FBvCVbUEDLKSvQ5QiQnXtRurdKrgaWw78TPPfDJ5waVk)
+*   **DTS #09/12, pNFT:** [https://solscan.io/token/33PgkS4TJUqXP9VrfPf9LaxXKQtP8vHqZVQWqAnVTBHQ](https://solscan.io/token/33PgkS4TJUqXP9VrfPf9LaxXKQtP8vHqZVQWqAnVTBHQ)
+*   **DTS #10/12, pNFT:** [https://solscan.io/token/Fhbf9y8YKLGnaJSKSCS6skcj9541TVQNaP9ucPuGHLFx](https://solscan.io/token/Fhbf9y8YKLGnaJSKSCS6skcj9541TVQNaP9ucPuGHLFx)
+*   **DTS #11/12, pNFT:** [https://solscan.io/token/sHjrTqWqtRH69RuqrvNhCP2S6vbairrpsXTN9AWoge9](https://solscan.io/token/sHjrTqWqtRH69RuqrvNhCP2S6vbairrpsXTN9AWoge9)
+*   **DTS #12/12, pNFT:** [https://solscan.io/token/6oyAA689e9kK7tQucWUAHeTVvDduoy5sa24adhz2BisC](https://solscan.io/token/6oyAA689e9kK7tQucWUAHeTVvDduoy5sa24adhz2BisC)
 
 ## Troubleshooting
 
