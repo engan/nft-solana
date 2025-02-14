@@ -157,7 +157,7 @@ console.log(
 /* -------------------------------------------------------
    3) Gjenbruk av RuleSet - gjelder pNFT (Ikke for NFT)
 ------------------------------------------------------- */
-// Fjernet for vanlig NFT - ruleSet brukes kun for pNFT
+// Komentert ut for vanlig NFT - ruleSet brukes kun for pNFT
 // const ruleSetNameGlobal = 'MyRoyaltyRuleSet';
 // const umiOwner = publicKey(umiUserSigner.publicKey.toString());
 // const ruleSetPda = await findRuleSetPda(umi, { owner: umiOwner, name: ruleSetNameGlobal });
@@ -202,10 +202,10 @@ if (!metadataUri.startsWith('http')) {
 
 // Les inn verdier fra .env med standardverdier dersom de ikke er satt
 const microLamports = Math.max(
-  parseInt(process.env.COMPUTE_MICROLAMPORTS || '500', 10),
+  parseInt(process.env.COMPUTE_MICROLAMPORTS || '2000', 10),
   1 // Sørger for at microLamports ikke er mindre enn 1
 )
-const unitLimit = parseInt(process.env.COMPUTE_UNIT_LIMIT || '250000', 10)
+const unitLimit = parseInt(process.env.COMPUTE_UNIT_LIMIT || '200000', 10)
 
 // Bruk disse verdiene i ComputeBudgetProgram-innstillingene
 const addPriorityFee = ComputeBudgetProgram.setComputeUnitPrice({
