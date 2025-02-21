@@ -323,7 +323,7 @@ To deploy your project to Mainnet-beta with real Solana and Arweave, follow thes
 *   **DTS #04/12, pNFT:** [https://solscan.io/token/BZKSAp7zVFezQLAQz2MVH9kSxJoodvDRvdQor1yAUGhi](https://solscan.io/token/BZKSAp7zVFezQLAQz2MVH9kSxJoodvDRvdQor1yAUGhi)
 *   **DTS #05/12, pNFT:** [https://solscan.io/token/4aDfp4g9diVhvctgPfX2rjAVrMj88iDraLBEJGjWoB9H](https://solscan.io/token/4aDfp4g9diVhvctgPfX2rjAVrMj88iDraLBEJGjWoB9H)
 *   **DTS #06/12, pNFT:** [https://solscan.io/token/75ZaXVTeHCajB1WJ3ChnaDW4go6rRJRYsAiJRQ5Ni7ac](https://solscan.io/token/75ZaXVTeHCajB1WJ3ChnaDW4go6rRJRYsAiJRQ5Ni7ac)
-*   **DTS #07/12, pNFT:** [https://solscan.io/token/D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD](https://solscan.io/token/D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD)
+*   **DTS #07/12, pNFT:** [https://solscan.io/token/9yWyak9W8Riui6YT5Lpohn5hCQcVhYmUY9zLnrHHwErG](https://solscan.io/token/9yWyak9W8Riui6YT5Lpohn5hCQcVhYmUY9zLnrHHwErG)
 *   **DTS #08/12, pNFT:** [https://solscan.io/token/FBvCVbUEDLKSvQ5QiQnXtRurdKrgaWw78TPPfDJ5waVk](https://solscan.io/token/FBvCVbUEDLKSvQ5QiQnXtRurdKrgaWw78TPPfDJ5waVk)
 *   **DTS #09/12, pNFT:** [https://solscan.io/token/33PgkS4TJUqXP9VrfPf9LaxXKQtP8vHqZVQWqAnVTBHQ](https://solscan.io/token/33PgkS4TJUqXP9VrfPf9LaxXKQtP8vHqZVQWqAnVTBHQ)
 *   **DTS #10/12, pNFT:** [https://solscan.io/token/Fhbf9y8YKLGnaJSKSCS6skcj9541TVQNaP9ucPuGHLFx](https://solscan.io/token/Fhbf9y8YKLGnaJSKSCS6skcj9541TVQNaP9ucPuGHLFx)

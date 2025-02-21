@@ -1,5 +1,4 @@
 import { Keypair } from '@solana/web3.js';
-import bs58 from 'bs58';
 import Arweave from 'arweave';
 import fs from 'fs';
 import path from 'path';
@@ -12,6 +11,7 @@ dotenv.config({ path: '.env.mainnet' });
 const ARWEAVE_WALLET_PATH = process.env.ARWEAVE_WALLET || '';
 const ASSETS_PATH = process.env.ASSETS_PATH || './assets';
 const BASE_ARWEAVE_URL = process.env.BASE_ARWEAVE_URL || 'https://arweave.net';
+const uploadSinglePair = process.env.SINGLE_NFT_PAIR || '';
 
 // Hent Solana wallet-fil – dette er den lommeboken du ønsker å bruke som updateAuthority og til mottak av royalties
 const SOLANA_WALLET_PATH = path.join(process.cwd(), process.env.SOLANA_WALLET || 'wallets/mainnet-id.json');
@@ -68,8 +68,8 @@ const getFileExtension = (fileName: string): 'png' | 'jpg' | 'json' | null => {
  * @param imageTxId – Transaksjons-IDen for opplastet bilde.
  * @param walletAddress – Den Solana-adressen som skal settes som creator (og senere updateAuthority).
  */
-const updateMetadataFileImage = (metadataFile: string, imageTxId: string, walletAddress: string) => {
-  const fileExtension = getFileExtension(metadataFile);
+const updateMetadataFileImage = (metadataFile: string, imageFile: string, imageTxId: string, walletAddress: string) => {
+  const fileExtension = getFileExtension(imageFile);
   // Bestem MIME-type basert på filendelse (her forutsatt jpg og png)
   const mimeType = fileExtension === 'jpg' ? 'image/jpeg' : 'image/png';
   const metadataContent = JSON.parse(fs.readFileSync(metadataFile, 'utf8'));
@@ -199,7 +199,7 @@ async function uploadCollectionInTwoSteps(
   console.log('Collection image TxID:', imageTxId);
 
   // 2) Oppdater lokal metadatafil med bildeinfo (bruker Solana wallet-adressen)
-  updateMetadataFileImage(metadataFilePath, imageTxId, walletAddress);
+  updateMetadataFileImage(metadataFilePath, collectionImageFile, imageTxId, walletAddress);
 
   // 3) Last opp metadatafilen til Arweave
   console.log('\nUploading collection metadata...');
@@ -258,7 +258,7 @@ async function uploadNftInTwoSteps(
   console.log('NFT image TxID:', imageTxId);
 
   // 2) Oppdater NFT-metadatafilen med bildeinfo (bruker Solana wallet-adressen)
-  updateMetadataFileImage(nftMetadataFile, imageTxId, walletAddress);
+  updateMetadataFileImage(nftMetadataFile, nftImageFile, imageTxId, walletAddress);
 
   // 3) Last opp NFT-metadata til Arweave
   console.log('Uploading NFT metadata...');
@@ -340,28 +340,52 @@ const uploadAssets = async (): Promise<void> => {
     throw new Error(`Mismatched NFT images and metadata. ${missingFiles}`);
   }
 
-  // Collection Upload: Sørg for at det finnes minst ett bilde og en metadatafil for collection
-  if (files.collectionImages.length === 0 || files.collectionMetadata.length === 0) {
-    throw new Error('No collection image or metadata found for Arweave upload.');
+  // Håndter selektiv opplasting for collection-filer
+  let collectionImageFile: string | undefined;
+  let collectionMetadataFile: string | undefined;
+  if (uploadSinglePair) {
+    const filteredImages = files.collectionImages.filter(file => file.includes(uploadSinglePair));
+    const filteredMetadata = files.collectionMetadata.filter(file => file.includes(uploadSinglePair));
+    if (filteredImages.length === 0 || filteredMetadata.length === 0) {
+      console.log(`Ingen collection-filer funnet med identifikatoren "${uploadSinglePair}". Collection opplasting hoppes over.`);
+    } else {
+      collectionImageFile = filteredImages[0];
+      collectionMetadataFile = filteredMetadata[0];
+    }
+  } else {
+    // Standard: ta den første filen
+    collectionImageFile = files.collectionImages[0];
+    collectionMetadataFile = files.collectionMetadata[0];
   }
-  const collectionImageFile = files.collectionImages[0];
-  const collectionMetadataFile = files.collectionMetadata[0];
 
-  console.log('\n=== Uploading Collection to Arweave ===');
-  // Bruk SOLANA_WALLET_ADDRESS (den nye adressen) som creators for både collection og NFT-er
-  const { imageTxId: collImgTxId, metadataTxId: collMetaTxId } =
-    await uploadCollectionInTwoSteps(arweave, jwk, collectionImageFile, collectionMetadataFile, solanaWalletAddress);
-
-  console.log(`\nCollection uploaded. 
+  if (collectionImageFile && collectionMetadataFile) {
+    console.log('\n=== Uploading Collection to Arweave ===');
+    // Bruk SOLANA_WALLET_ADDRESS (den nye adressen) som creators for både collection og NFT-er
+    const { imageTxId: collImgTxId, metadataTxId: collMetaTxId } =
+      await uploadCollectionInTwoSteps(arweave, jwk, collectionImageFile, collectionMetadataFile, solanaWalletAddress);
+    console.log(`\nCollection uploaded. 
      Metadata: ${BASE_ARWEAVE_URL}/${collMetaTxId}
      Image:    ${BASE_ARWEAVE_URL}/${collImgTxId}`);
+  } else {
+    console.log('Collection-filer ble ikke valgt for opplasting.');
+  }
 
   // NFT Batch Upload
   for (let i = 0; i < files.nftImages.length; i++) {
-    console.log(`\n=== Uploading NFT #${i + 1} of ${files.nftImages.length} ===`);
     const nftImageFile = files.nftImages[i];
     const nftMetadataFile = files.nftMetadata[i];
 
+    // Hvis en spesifikk NFT skal gjenopplastes, hopp over par som ikke matcher identifikatoren
+    if (
+      uploadSinglePair &&
+      !nftImageFile.includes(uploadSinglePair) &&
+      !nftMetadataFile.includes(uploadSinglePair)
+    ) {
+      console.log(`Skipping NFT pair: ${nftImageFile} and ${nftMetadataFile}`);
+      continue;
+    }
+
+    console.log(`\n=== Uploading NFT #${i + 1} of ${files.nftImages.length} ===`);
     const { imageTxId, metadataTxId } = await uploadNftInTwoSteps(arweave, jwk, nftImageFile, nftMetadataFile, solanaWalletAddress);
     console.log(`✅ NFT #${i + 1} uploaded. 
        Metadata: ${BASE_ARWEAVE_URL}/${metadataTxId}

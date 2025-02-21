@@ -3,7 +3,7 @@
   "symbol": "DTS",
   "description": "An image of a politician neglecting public health issues while being cheered on by billionaires and surrounded by cash.\n\nThis is a pilot project featuring 12 unique pNFTs, the first in a series of AI-generated political satire collections.",
   "seller_fee_basis_points": 1000,
-  "image": "https://arweave.net/UBptuLdHyxMNpQzSMCqztnWDdTr18C9ZFidRrmMxE90",
+  "image": "https://arweave.net/DsrFD_2e7fc3bEW6Sf9_D_CDYeCo5Jo438qaSO_BUV4",
   "animation_url": "",
   "youtube_url": "",
   "external_url": "https://facebook.com/nftsatire/",
@@ -50,17 +50,17 @@
   ],
   "uploadInfo": {
     "imageUpload": {
-      "transactionId": "UBptuLdHyxMNpQzSMCqztnWDdTr18C9ZFidRrmMxE90",
+      "transactionId": "DsrFD_2e7fc3bEW6Sf9_D_CDYeCo5Jo438qaSO_BUV4",
       "file": {
-        "uri": "https://arweave.net/UBptuLdHyxMNpQzSMCqztnWDdTr18C9ZFidRrmMxE90",
-        "type": "image/png",
+        "uri": "https://arweave.net/DsrFD_2e7fc3bEW6Sf9_D_CDYeCo5Jo438qaSO_BUV4",
+        "type": "image/jpeg",
         "description": "Arweave image file"
       }
     },
     "metadataUpload": {
-      "transactionId": "yaxYb88OUl_MSWsT3SslWUz_aAUB-hhE7xDHkf5Qbwo",
+      "transactionId": "H7MJOdZt11qneMg_qiuPbNk7MJtPk5VfL6RO3BFjgtI",
       "file": {
-        "uri": "https://arweave.net/yaxYb88OUl_MSWsT3SslWUz_aAUB-hhE7xDHkf5Qbwo",
+        "uri": "https://arweave.net/H7MJOdZt11qneMg_qiuPbNk7MJtPk5VfL6RO3BFjgtI",
         "type": "application/json",
         "description": "Arweave metadata file"
       }
@@ -74,11 +74,11 @@
     "category": "image",
     "files": [
       {
-        "uri": "https://arweave.net/UBptuLdHyxMNpQzSMCqztnWDdTr18C9ZFidRrmMxE90",
-        "type": "image/png",
+        "uri": "https://arweave.net/DsrFD_2e7fc3bEW6Sf9_D_CDYeCo5Jo438qaSO_BUV4",
+        "type": "image/jpeg",
         "description": "Arweave image file"
       }
     ]
   },
-  "uri": "https://arweave.net/yaxYb88OUl_MSWsT3SslWUz_aAUB-hhE7xDHkf5Qbwo"
+  "uri": "https://arweave.net/H7MJOdZt11qneMg_qiuPbNk7MJtPk5VfL6RO3BFjgtI"
 }

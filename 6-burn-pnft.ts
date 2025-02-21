@@ -33,8 +33,10 @@ const umi = createUmi(clusterApiUrl(CLUSTER)).use(mplTokenMetadata());
 // Bruk keypairIdentity med Umi
 umi.use(keypairIdentity(umiKeypair));
 
-// Definer NFT-mint-adressen som skal brenns 
-const nftMintAddress = publicKey('7NLD2Ps6Xek4kjkM1gFxFAFZqf7nJA2jjQWeq3QHvm77'); // Erstatt med mint-adressen til NFTen
+/////////////////////////////////////////////////////
+// Erstatt med NFT-mint-adressen som skal brennes  //
+/////////////////////////////////////////////////////
+const nftMintAddress = publicKey('D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD');
 
 // NFT mint-adressen (pNFT)
 const mintId = nftMintAddress;
