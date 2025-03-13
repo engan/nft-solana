@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { volumeMapping } from './0-volume-mapping';
 import {
   findMetadataPda,
   fetchDigitalAsset,
@@ -48,7 +49,11 @@ if (!fs.existsSync(envFile)) {
 dotenv.config({ path: envFile });
 
 const connection = new Connection(clusterApiUrl(CLUSTER));
-const assetsPath = process.env.ASSETS_PATH || './assets';
+const volumeKey = process.env.VOLUME || 'vol02';
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const assetsPath = path.join('volumes', volumeInfo.folderName, 'assets');
+
+console.log(`📂 Bruker volum: ${volumeKey} (${volumeInfo.folderName})`);
 
 // Definer keypair-fil basert på CLUSTER
 const keypairFilename = CLUSTER === 'devnet' ? 'devnet-id.json' : 'mainnet-id.json';
@@ -90,15 +95,16 @@ console.log('Set up Umi instance for user. Loaded user public key:', umiUser.pub
 /* -----------------------------
    3) Les inn collection-adressen
 ------------------------------ */
-const collectionAddressFile = './assets/cache/collection-address.json';
+const collectionAddressFile = path.join(assetsPath, 'cache', 'collection-address.json'); // 🚀 Bruk volumets cache-mappe!
+
 if (!fs.existsSync(collectionAddressFile)) {
   throw new Error(
     `collection-address.json not found at '${collectionAddressFile}'. 
-     Kjør '2-create-collection.ts' først for å lage en NFT-samling.`
+     Kjør '3-create-collection.ts' først for å lage en NFT-samling.`
   );
 }
 
-// Les filen og hent streng
+// Les filen og hent collection-adressen
 const { mintedCollectionAddress } = JSON.parse(fs.readFileSync(collectionAddressFile, 'utf8'));
 
 // Sjekk om mintedCollectionAddress er gyldig base58
@@ -121,10 +127,12 @@ console.log('\nSkipping verification of the collection NFT itself (not required 
 /* -----------------------------
    5) Les inn NFT-adresser
 ------------------------------ */
-const nftAddressesFile = './assets/cache/nft-addresses.json';
+const nftAddressesFile = path.join(assetsPath, 'cache', 'nft-addresses.json'); // 🚀 Bruk volumets cache-mappe!
+
 if (!fs.existsSync(nftAddressesFile)) {
   throw new Error(
-    'NFT addresses file not found. Please run create-nfts.ts first.'
+    `nft-addresses.json not found at '${nftAddressesFile}'. 
+     Kjør '4-create-pnfts.ts' først for å lage NFT-er.`
   );
 }
 

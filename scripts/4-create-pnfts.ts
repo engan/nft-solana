@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import dotenv from 'dotenv'
+import { volumeMapping } from './0-volume-mapping';
 
 // 1) Solana Web3
 import {
@@ -73,7 +74,11 @@ if (!fs.existsSync(envFile)) {
 dotenv.config({ path: envFile })
 
 const connection = new Connection(clusterApiUrl(CLUSTER))
-const assetsPath = process.env.ASSETS_PATH || './assets'
+const volumeKey = process.env.VOLUME || 'vol02';
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const assetsPath = path.join('volumes', volumeInfo.folderName, 'assets');
+
+console.log(`📂 Bruker volum: ${volumeKey} (${volumeInfo.folderName})`);
 
 // Definer keypair-fil basert på CLUSTER
 const keypairFilename =
@@ -166,16 +171,19 @@ console.log('RuleSet PDA:', ruleSetPda.toString())
 // -----------------------------
 // 4) Les collection-adressen
 // -----------------------------
-const collectionPath = path.join('./assets/cache', 'collection-address.json')
+const collectionPath = path.join(assetsPath, 'cache', 'collection-address.json')
+
 if (!fs.existsSync(collectionPath)) {
   throw new Error(
-    `collection-address.json not found at '${collectionPath}'. Kjør '2-create-collection.ts' først for å lage en NFT-samling.`
+    `collection-address.json not found at '${collectionPath}'. Kjør '3-create-collection.ts' først for å lage en NFT-samling.`
   )
 }
+
 const { mintedCollectionAddress } = JSON.parse(
   fs.readFileSync(collectionPath, 'utf8')
-)
-console.log('Using mintedCollectionAddress from file:', mintedCollectionAddress)
+);
+
+console.log('Using mintedCollectionAddress from file:', mintedCollectionAddress);
 
 //
 // -----------------------------
@@ -365,10 +373,13 @@ for (let i = 0; i < nftFilesToProcess.length; i += PARALLEL_BATCH_SIZE) {
 // -----------------------------
 // 8) Lagre resultater
 // -----------------------------
-const cacheDir = path.join('./assets', 'cache')
+const cacheDir = path.join(assetsPath, 'cache'); // 🚀 Bruk volumets cache-mappe!
+
+// Opprett cache-mappen i volumet hvis den ikke finnes
 if (!fs.existsSync(cacheDir)) {
-  fs.mkdirSync(cacheDir)
+  fs.mkdirSync(cacheDir, { recursive: true });
 }
+
 const nftAddressesFile = path.join(cacheDir, 'nft-addresses.json')
 fs.writeFileSync(
   nftAddressesFile,

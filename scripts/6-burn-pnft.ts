@@ -6,12 +6,17 @@ import { Keypair, clusterApiUrl, Cluster } from '@solana/web3.js';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { volumeMapping } from './0-volume-mapping';
 
 // Last inn miljøvariabler
 dotenv.config();
 
 const CLUSTER: Cluster = (process.env.CLUSTER as Cluster) || 'devnet';
-const assetsPath = process.env.ASSETS_PATH || './assets';
+const volumeKey = process.env.VOLUME || 'vol02';
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const assetsPath = path.join('volumes', volumeInfo.folderName, 'assets');
+
+console.log(`📂 Bruker volum: ${volumeKey} (${volumeInfo.folderName})`);
 
 // Definer keypair-fil basert på CLUSTER
 const keypairFilename = CLUSTER === 'devnet' ? 'devnet-id.json' : 'mainnet-id.json';
@@ -38,20 +43,28 @@ umi.use(keypairIdentity(umiKeypair));
 /////////////////////////////////////////////////////
 const nftMintAddress = publicKey('D2u1rJ6gG9CKuw13ctJ2BeJg3Sv5aawxVpZLwqPd8CnD');
 
+if (!nftMintAddress.toString().match(/^[1-9A-HJ-NP-Za-km-z]{32,44}$/)) {
+  throw new Error(`🚨 Ugyldig NFT-adresse: ${nftMintAddress.toString()}`);
+}
+
 // NFT mint-adressen (pNFT)
 const mintId = nftMintAddress;
 
-// Hent NFT-asset med tilknyttet tokenkonto for den gitte eieren
-const assetWithToken = await fetchDigitalAssetWithAssociatedToken(
-  umi,
-  mintId,
-  umi.identity.publicKey
-);
+// Hent NFT-asset med tilknyttet tokenkonto for den gitte eieren - Token Record PDA
+let assetWithToken;
+try {
+  assetWithToken = await fetchDigitalAssetWithAssociatedToken(
+    umi,
+    mintId,
+    umi.identity.publicKey // Endret fra "owner" til "token"
+  );
+} catch (error) {
+  throw new Error(`🚨 Kunne ikke hente NFT-asset. Sjekk at adressen '${nftMintAddress.toString()}' tilhører denne wallet.`);
+}
 
-// Finn Token Record PDA
 const tokenRecord = findTokenRecordPda(umi, {
   mint: nftMintAddress,
-  token: umi.identity.publicKey, // Endret fra "owner" til "token"
+  token: umi.identity.publicKey, 
 });
 
 // Brenn NFTen
@@ -64,4 +77,4 @@ await burnV1(umi, {
   tokenStandard: TokenStandard.ProgrammableNonFungible,
 }).sendAndConfirm(umi);
 
-console.log('NFT ble brent vellykket, solana tilbakeført (ca. halve mintekostnad)!');
+console.log(`✅ NFT '${nftMintAddress.toString()}' ble brent vellykket! Solana tilbakeført (ca. halve mintekostnad).`);

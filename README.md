@@ -115,6 +115,30 @@ npm list -g --depth=0
     pnpm install
     ```
 
+## Run from terminal:
+DEVNET (Irys and Solana)  
+    CLUSTER=devnet VOLUME=vol02 SOLANA_SECRET_KEY="DIN_SOLANA_SECRET_KEY_HER" npx esrun scripts/0-convert-secret.ts  
+    CLUSTER=devnet VOLUME=vol02 npx esrun scripts/0-read-wallet.ts  
+
+CLUSTER=devnet VOLUME=vol02 npx esrun scripts/1-irys-uploads.ts  
+CLUSTER=devnet VOLUME=vol02 npx esrun scripts/2-create-ruleset.ts  
+CLUSTER=devnet VOLUME=vol02 npx esrun scripts/3-create-collection.ts  
+CLUSTER=devnet VOLUME=vol02 npx esrun scripts/4-create-pnfts.ts  
+CLUSTER=devnet VOLUME=vol02 npx esrun scripts/5-verify-pnfts.ts  
+CLUSTER=devnet VOLUME=vol02 npx esrun scripts/6-burn-pnft.ts  
+
+MAINNET (Arveave and Solana)  
+    CLUSTER=mainnet-beta VOLUME=vol02 SOLANA_SECRET_KEY="DIN_SOLANA_SECRET_KEY_HER" npx esrun scripts/0-convert-secret.ts  
+    CLUSTER=mainnet-beta VOLUME=vol02 npx esrun scripts/0-read-wallet.ts  
+    CLUSTER=mainnet VOLUME=vol02 npx esrun scripts/1-irys-uploads.ts    < Alternative to Arveave, not used on mainnet!  
+
+CLUSTER=mainnet VOLUME=vol02 npx esrun scripts/1-arweave-uploads.ts  
+CLUSTER=mainnet-beta VOLUME=vol02 npx esrun scripts/2-create-ruleset.ts  
+CLUSTER=mainnet-beta VOLUME=vol02 npx esrun scripts/3-create-collection.ts  
+CLUSTER=mainnet-beta VOLUME=vol02 npx esrun scripts/4-create-pnfts.ts  
+CLUSTER=mainnet-beta VOLUME=vol02 npx esrun scripts/5-verify-pnfts.ts  
+CLUSTER=mainnet-beta VOLUME=vol02 npx esrun scripts/6-burn-pnft.ts  
+
 ## Usage
 
 This project includes scripts to upload assets, create a collection NFT, create individual NFTs, and verify NFTs.
@@ -306,6 +330,7 @@ To deploy your project to Mainnet-beta with real Solana and Arweave, follow thes
 
 *   **`0-convert-secret.ts`**: Converts a Solana secret key from Base58 format to a JSON array and saves it to a configuration file.
 *   **`0-read-wallet.ts`**: Reads a Solana wallet file and outputs the Base58 private key.
+*   **`0-volume-mapping.ts`**: Defines multiple volumes, same as nft collection, for reusing the same script files across multiple projects.
 *   **`1-arweave-uploads.ts`**: Uploads images and metadata files to Arweave. It handles uploading collection and NFT assets, and updating local metadata files with uploaded URLs.
 *   **`1-irys-uploads.ts`**: Uploads images and metadata files to Irys. It handles funding the Irys node, uploading collection and NFT assets, and updating local metadata files with uploaded URLs.
 *   **`2-create-ruleset.ts`**: Creates a Rule Set for enforcing royalties on Solana pNFTs. Checks if a Rule Set already exists; if not, it creates a new one with specified operations and permissions.

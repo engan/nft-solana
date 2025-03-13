@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { volumeMapping } from './0-volume-mapping';
 
 // 1) Solana Web3
 import {
@@ -35,19 +36,39 @@ import {
 /* -----------------------------
    0) Oppsett
 ------------------------------ */
-dotenv.config();
+// Først last inn en standard .env (dersom den finnes)
+dotenv.config()
 
-const CLUSTER = (process.env.CLUSTER || 'devnet') as Cluster;
+const CLUSTER = (process.env.CLUSTER || 'devnet') as Cluster
 if (!['devnet', 'testnet', 'mainnet-beta'].includes(CLUSTER)) {
-  throw new Error(`Invalid CLUSTER value: ${CLUSTER}. Must be 'devnet', 'testnet', or 'mainnet-beta'.`);
+  throw new Error(
+    `Invalid CLUSTER value: ${CLUSTER}. Must be 'devnet', 'testnet', or 'mainnet-beta'. Current value: '${CLUSTER}'`
+  )
 }
-console.log(`Using network: ${CLUSTER}`);
+console.log(`Using network: ${CLUSTER}`)
 
-const keypairFilename = CLUSTER === 'devnet' ? 'devnet-id.json' : 'mainnet-id.json';
-const keypairPath = path.join(process.cwd(), 'wallets', keypairFilename);
+const envFile = `.env.${CLUSTER}`
+if (!fs.existsSync(envFile)) {
+  throw new Error(`Environment file ${envFile} does not exist!`)
+}
+
+// Last inn den spesifikke .env-filen
+dotenv.config({ path: envFile })
+
+const connection = new Connection(clusterApiUrl(CLUSTER))
+const volumeKey = process.env.VOLUME || 'vol02';
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const assetsPath = path.join('volumes', volumeInfo.folderName, 'assets');
+
+console.log(`📂 Bruker volum: ${volumeKey} (${volumeInfo.folderName})`);
+
+// Definer keypair-fil basert på CLUSTER
+const keypairFilename =
+  CLUSTER === 'devnet' ? 'devnet-id.json' : 'mainnet-id.json'
+const keypairPath = path.join(process.cwd(), 'wallets', keypairFilename)
 
 if (!fs.existsSync(keypairPath)) {
-  throw new Error(`Keypair file not found at path: ${keypairPath}`);
+  throw new Error(`Keypair file not found at path: ${keypairPath}`)
 }
 
 /* -----------------------------
@@ -57,7 +78,6 @@ const userSecretArray = JSON.parse(fs.readFileSync(keypairPath, 'utf8'));
 const userKeypair = SolanaKeypair.fromSecretKey(new Uint8Array(userSecretArray));
 console.log('\nLoaded user:', userKeypair.publicKey.toBase58());
 
-const connection = new Connection(clusterApiUrl(CLUSTER));
 const umi = createBundleUmi(connection.rpcEndpoint);
 umi.use(keypairIdentity(createSignerFromKeypair(umi, umi.eddsa.createKeypairFromSecretKey(userKeypair.secretKey))));
 
@@ -134,12 +154,16 @@ if (accountInfo !== null) {
 /* -----------------------------
    3) Lagre RuleSet-adresse
 ------------------------------ */
-const cacheFolder = path.join('./assets', 'cache');
+// Oppdater cache-mappen slik at den lagres i volumet
+const cacheFolder = path.join(assetsPath, 'cache');
+
+// 🛠️ Sjekk og opprett katalogen hvis den ikke finnes
 if (!fs.existsSync(cacheFolder)) {
-  fs.mkdirSync(cacheFolder);
+  fs.mkdirSync(cacheFolder, { recursive: true }); // recursive: true lager hele stistrukturen om nødvendig
 }
 
 const ruleSetAddressFile = path.join(cacheFolder, 'ruleset-address.json');
+
 fs.writeFileSync(
   ruleSetAddressFile,
   JSON.stringify({ ruleSetAddress: ruleSetPdaStr }, null, 2),

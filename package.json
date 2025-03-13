@@ -1,12 +1,12 @@
 {
-  "name": "drain-the-swamp",
+  "name": "nftsatire",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "1-irys-ar-uploads:devnet": "CLUSTER=devnet solana config set --url https://api.devnet.solana.com && solana config set --keypair ~/NFT-projects/Solana/drain-the-swamp/wallets/devnet-id.json && esrun 1-irys-uploads.ts",
-    "1-irys-ar-uploads:mainnet": "CLUSTER=mainnet solana config set --url https://api.mainnet-beta.solana.com && solana config set --keypair ~/NFT-projects/Solana/drain-the-swamp/wallets/mainnet-id.json && esrun 1-irys-uploads.ts"
+    "1-irys-ar-uploads:devnet": "CLUSTER=devnet solana config set --url https://api.devnet.solana.com && solana config set --keypair ~/NFT-projects/Solana/nftsatire/wallets/devnet-id.json && esrun scripts/1-irys-uploads.ts",
+    "1-irys-ar-uploads:mainnet": "CLUSTER=mainnet solana config set --url https://api.mainnet-beta.solana.com && solana config set --keypair ~/NFT-projects/Solana/nftsatire/wallets/mainnet-id.json && esrun scripts/1-irys-uploads.ts"
   },
   "keywords": [],
   "author": "",

@@ -3,13 +3,17 @@ import Arweave from 'arweave';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { volumeMapping } from './0-volume-mapping';
 
 //////////////////////////////////////////////
 //  1) Les miljøvariabler fra .env.mainnet   //
 //////////////////////////////////////////////
 dotenv.config({ path: '.env.mainnet' });
 const ARWEAVE_WALLET_PATH = process.env.ARWEAVE_WALLET || '';
-const ASSETS_PATH = process.env.ASSETS_PATH || './assets';
+const volumeKey = process.env.VOLUME || 'vol02'; 
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const ASSETS_PATH  = path.join('volumes', volumeInfo.folderName, 'assets');
+
 const BASE_ARWEAVE_URL = process.env.BASE_ARWEAVE_URL || 'https://arweave.net';
 const uploadSinglePair = process.env.SINGLE_NFT_PAIR || '';
 

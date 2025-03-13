@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import dotenv from 'dotenv'
+import { volumeMapping } from './0-volume-mapping';
 
 // 1) Solana Web3
 import {
@@ -69,7 +70,11 @@ if (!fs.existsSync(envFile)) {
 dotenv.config({ path: envFile })
 
 const connection = new Connection(clusterApiUrl(CLUSTER))
-const assetsPath = process.env.ASSETS_PATH || './assets'
+const volumeKey = process.env.VOLUME || 'vol02';
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const assetsPath = path.join('volumes', volumeInfo.folderName, 'assets');
+
+console.log(`📂 Bruker volum: ${volumeKey} (${volumeInfo.folderName})`);
 
 // Definer keypair-fil basert på CLUSTER
 const keypairFilename =
@@ -319,9 +324,11 @@ console.log(`Token Address (ATA): ${associatedTokenAddress.toBase58()}`)
 console.log(`Owner Address: ${umiUserSigner.publicKey.toString()}`)
 // Fjernet: console.log(`RuleSet PDA: ${ruleSetPda.toString()}`)
 
-const cacheFolder = path.join('./assets', 'cache')
+const cacheFolder = path.join(assetsPath, 'cache'); // 🚀 Bruk riktig volum!
+
+// Opprett cache-mappen hvis den ikke finnes
 if (!fs.existsSync(cacheFolder)) {
-  fs.mkdirSync(cacheFolder)
+  fs.mkdirSync(cacheFolder, { recursive: true });
 }
 
 const collectionAddressFile = path.join(cacheFolder, 'collection-address.json')

@@ -1,0 +1,82 @@
+{
+  "name": "Trumpscession #01/02",
+  "symbol": "TRSC",
+  "description": "A satirical pNFT collection exploring economy going bad no1",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/n6EwgdMDZ9DYWsYXUiUBIx1n6bqJnOXvYNDos3waEwY",
+  "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
+  "attributes": [
+    {
+      "trait_type": "Theme",
+      "value": "Political Satire"
+    },
+    {
+      "trait_type": "Art Style",
+      "value": "AI-Generated Illustration"
+    },
+    {
+      "trait_type": "Series",
+      "value": "Volume 02: Trumpscession"
+    },
+    {
+      "trait_type": "Money Presence",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Text Reference Below",
+      "value": "no"
+    },
+    {
+      "trait_type": "Number of People",
+      "value": "7"
+    },
+    {
+      "trait_type": "Trump Suit Color",
+      "value": "Blue"
+    },
+    {
+      "trait_type": "Leader's Expression",
+      "value": "Angry Face"
+    }
+  ],
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "n6EwgdMDZ9DYWsYXUiUBIx1n6bqJnOXvYNDos3waEwY",
+      "file": {
+        "uri": "https://arweave.net/n6EwgdMDZ9DYWsYXUiUBIx1n6bqJnOXvYNDos3waEwY",
+        "type": "image/jpeg",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "ZuAIj0ihSGaO9bTv2TvqhOhmW6RB-NwgTv1XH3FiJ30",
+      "file": {
+        "uri": "https://arweave.net/ZuAIj0ihSGaO9bTv2TvqhOhmW6RB-NwgTv1XH3FiJ30",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Trumpscession - Volume 02",
+    "family": "Political Satire AI"
+  },
+  "properties": {
+    "category": "image",
+    "files": [
+      {
+        "uri": "https://arweave.net/n6EwgdMDZ9DYWsYXUiUBIx1n6bqJnOXvYNDos3waEwY",
+        "type": "image/jpeg",
+        "description": "Arweave image file"
+      }
+    ]
+  },
+  "uri": "https://arweave.net/ZuAIj0ihSGaO9bTv2TvqhOhmW6RB-NwgTv1XH3FiJ30"
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Trumpscession",
+  "symbol": "TRSC",
+  "description": "A satirical pNFT collection exploring economy going bad collection",
+  "seller_fee_basis_points": 1000,
+  "image": "https://arweave.net/o8q9rxjfL_jXomnxXysSwXRtE6dx_csovppThMRjVnk",
+  "animation_url": "",
+  "youtube_url": "",
+  "external_url": "https://facebook.com/nftsatire/",
+  "creators": [
+    {
+      "address": "GacJtFgEZoVcL4Vb13vcC2HzbyRU6ujZEZnnWhNnmrbT",
+      "verified": true,
+      "share": 100
+    }
+  ],
+  "attributes": [],
+  "uploadInfo": {
+    "imageUpload": {
+      "transactionId": "o8q9rxjfL_jXomnxXysSwXRtE6dx_csovppThMRjVnk",
+      "file": {
+        "uri": "https://arweave.net/o8q9rxjfL_jXomnxXysSwXRtE6dx_csovppThMRjVnk",
+        "type": "image/jpeg",
+        "description": "Arweave image file"
+      }
+    },
+    "metadataUpload": {
+      "transactionId": "Vo_7LBo5SfQpQdm7ANxGleHlhKWCvMjPpPvsGK3omm4",
+      "file": {
+        "uri": "https://arweave.net/Vo_7LBo5SfQpQdm7ANxGleHlhKWCvMjPpPvsGK3omm4",
+        "type": "application/json",
+        "description": "Arweave metadata file"
+      }
+    }
+  },
+  "collection": {
+    "name": "Trumpscession - Volume 02",
+    "family": "Political Satire AI"
+  },
+  "properties": {
+    "category": "image",
+    "files": [
+      {
+        "uri": "https://arweave.net/o8q9rxjfL_jXomnxXysSwXRtE6dx_csovppThMRjVnk",
+        "type": "image/jpeg",
+        "description": "Arweave image file"
+      }
+    ]
+  },
+  "total_supply": 2,
+  "uri": "https://arweave.net/Vo_7LBo5SfQpQdm7ANxGleHlhKWCvMjPpPvsGK3omm4"
+}

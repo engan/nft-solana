@@ -5,6 +5,7 @@ import bs58 from 'bs58';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { volumeMapping } from './0-volume-mapping';
 
 // --- Load Environment Variables ---
 dotenv.config();
@@ -17,7 +18,10 @@ dotenv.config({ path: envFile });
 console.log(`Loaded environment file: ${envFile}`);
 
 const BASE_IRYS_URL = process.env.BASE_IRYS_URL || ''; // Eksempel: "https://irys.example.com"
-const ASSETS_PATH = process.env.ASSETS_PATH || '';
+const volumeKey = process.env.VOLUME || 'vol02'; 
+const volumeInfo = volumeMapping[volumeKey] || { folderName: volumeKey };
+const ASSETS_PATH  = path.join('volumes', volumeInfo.folderName, 'assets');
+// const ASSETS_PATH = process.env.ASSETS_PATH || '';
 
 // --- Define Wallet Paths ---
 const SOLANA_WALLET_PATH = path.join(process.cwd(), process.env.SOLANA_WALLET || 'wallets/devnet-id.json');
@@ -135,14 +139,15 @@ const getFileExtension = (fileName: string): 'png' | 'jpg' | null => {
  * - Oppretter/oppdaterer uploadInfo.imageUpload med bildeopplastningsdetaljer.
  * - Fjerner eventuelle dupliserte toppnivåfelt (som 'uri').
  */
-const updateMetadataFileImage = (metadataFile: string, imageId: string) => {
-  const fileExtension = getFileExtension(metadataFile);
+const updateMetadataFileImage = (metadataFile: string, imageFile: string, imageId: string) => {
+  const fileExtension = getFileExtension(imageFile); // Bruker imageFile i stedet for metadataFile
   const mimeType = fileExtension === 'jpg' ? 'image/jpeg' : 'image/png';
+
   const metadataContent = JSON.parse(fs.readFileSync(metadataFile, 'utf8'));
 
   // Oppdater 'image'
   metadataContent.image = `${BASE_IRYS_URL}/${imageId}`;
-  
+
   // Oppdater properties.files
   metadataContent.properties = metadataContent.properties || {};
   metadataContent.properties.files = [
@@ -153,10 +158,11 @@ const updateMetadataFileImage = (metadataFile: string, imageId: string) => {
     }
   ];
   metadataContent.properties.category = 'image';
+
   if (metadataContent.properties.creators) {
     delete metadataContent.properties.creators;
   }
-  
+
   // Sett creators på toppnivå (fast)
   metadataContent.creators = [
     {
@@ -169,7 +175,7 @@ const updateMetadataFileImage = (metadataFile: string, imageId: string) => {
   // Oppdater uploadInfo.imageUpload
   metadataContent.uploadInfo = metadataContent.uploadInfo || {};
   metadataContent.uploadInfo.imageUpload = {
-    transactionId: imageId, // Midlertidig, vil bli erstattet med den faktiske transaksjons-ID fra Irys
+    transactionId: imageId,
     file: {
       uri: `${BASE_IRYS_URL}/${imageId}`,
       type: mimeType,
@@ -224,7 +230,7 @@ async function uploadCollectionInTwoSteps(uploader: any, collectionImageFile: st
   const imageId = imageResult.id;
   console.log('Collection image ID:', imageId);
 
-  updateMetadataFileImage(metadataFilePath, imageId);
+  updateMetadataFileImage(metadataFilePath, collectionImageFile,imageId);
 
   console.log('\nUploading collection metadata...');
   const metaResult = await retryUpload(metadataFilePath, uploader);
@@ -262,7 +268,7 @@ async function uploadNftInTwoSteps(uploader: any, nftImageFile: string, nftMetad
   console.log('NFT image ID:', imageId);
 
   console.log('Updating NFT metadata with image info...');
-  updateMetadataFileImage(nftMetadataFile, imageId);
+  updateMetadataFileImage(nftMetadataFile, nftImageFile, imageId);
 
   console.log('Uploading NFT metadata...');
   const metaResult = await retryUpload(nftMetadataFile, uploader);
